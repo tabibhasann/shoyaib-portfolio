@@ -2742,23 +2742,6 @@ body.no-anim .marquee-track {
   }
 }
 
-/* ---------- Section Performance ---------- */
-.section,
-.about,
-.services,
-.work,
-.writing-preview,
-.contact,
-.process,
-.gallery {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 600px;
-}
-
-.process {
-  contain-intrinsic-size: auto 450px;
-}
-
 [id] {
   scroll-margin-top: 5rem;
 }
