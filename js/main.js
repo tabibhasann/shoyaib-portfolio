@@ -12,6 +12,10 @@
   var hasScrollTrigger = hasGSAP && typeof ScrollTrigger !== "undefined";
   var hasLenis = typeof Lenis !== "undefined";
 
+  if (hasGSAP && hasScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
   var isTouch = window.matchMedia("(hover: none)").matches || "ontouchstart" in window;
 
   if (reduceMotion) {
@@ -58,11 +62,13 @@
               onComplete: function () {
                 preloader.style.display = "none";
                 startHeroAnimations();
+                if (hasScrollTrigger) ScrollTrigger.refresh();
               }
             });
           } else {
             preloader.style.display = "none";
             startHeroAnimations();
+            if (hasScrollTrigger) ScrollTrigger.refresh();
           }
         }, 300);
       }
@@ -492,6 +498,9 @@
           trigger: el,
           start: "top 85%",
           onEnter: function () {
+            el.classList.add("in");
+          },
+          onEnterBackwards: function () {
             el.classList.add("in");
           }
         });

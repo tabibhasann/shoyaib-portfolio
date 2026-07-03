@@ -12,6 +12,10 @@
   var hasLenis = typeof Lenis !== "undefined";
   var isTouch = window.matchMedia("(hover: none)").matches || "ontouchstart" in window;
 
+  if (hasGSAP && hasScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
   if (reduceMotion || !hasGSAP) {
     document.body.classList.add("no-anim");
   }
