@@ -1972,6 +1972,15 @@ body.no-cursor .cursor-ring {
   transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
 }
 
+body.no-js .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+body.no-js .split-word span {
+  transform: none;
+}
+
 .reveal.in {
   opacity: 1;
   transform: translateY(0);

@@ -6,6 +6,8 @@
 (function () {
   "use strict";
 
+  document.body.classList.remove("no-js");
+
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var hasGSAP = typeof gsap !== "undefined";
   var hasScrollTrigger = hasGSAP && typeof ScrollTrigger !== "undefined";
