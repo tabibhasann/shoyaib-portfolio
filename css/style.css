@@ -2755,6 +2755,10 @@ body.no-anim .marquee-track {
   contain-intrinsic-size: auto 600px;
 }
 
+.process {
+  contain-intrinsic-size: auto 450px;
+}
+
 [id] {
   scroll-margin-top: 5rem;
 }
