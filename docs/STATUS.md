@@ -30,6 +30,8 @@ From a quick audit on 2026-11-09 (live site + code):
 
 ## Open questions
 
+- **Editing for Shoyaib (no CMS exists yet).** Shoyaib (the user's brother) wants to edit the site himself. Checked 2026-11-09: there is no CMS of any kind. No Sanity files in this repo or the archives; the user's Sanity account has only "Anchor Point Website"; no Sanity work for this site in Codex history (the 2026-07-04 Codex chat about Sanity was for a different client, Ramon, and only used this site as a design example). Sanity is the user's preferred option; not decided or started.
+
 - Should the site show his full name "Shoyaib Raby"? The domain uses it but the pages only say "Shoyaib" (and "Abu Musa M." on Upwork).
 - Are the About stats still current ($2K+ earned, 14 projects, 82 hours, IELTS 6.5)?
 - The old June draft (`~/Downloads/_archive/shoyaib/shoyaib-premium-june-old`) had things the live site doesn't: a third "Marketing" service card (funnels, strategy, content), the Upwork profile card shown on the page as a "Verified" proof badge, "X min read" labels on articles, and a "Next step" call-to-action box at the end of each article. Bring any of these back? (Nothing was copied; its `work/` folder is empty and all its assets are already in this repo.)
