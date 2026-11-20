@@ -8,6 +8,7 @@ export default defineCliConfig({
   // The editing screen lives at https://shoyaib.sanity.studio
   studioHost: 'shoyaib',
   deployment: {
+    appId: 'h5w939xxs6o1j0z2v3gxpn40',
     /**
      * Enable auto-updates for studios.
      * Learn more at https://www.sanity.io/docs/studio/latest-version-of-sanity#k47faf43faf56
