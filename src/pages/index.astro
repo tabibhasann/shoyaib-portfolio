@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ServiceCard from '../components/ServiceCard.astro'
+import WorkMedia from '../components/WorkMedia.astro'
+import ArticleRows from '../components/ArticleRows.astro'
+import {client, getSettings, SAMPLE, ARTICLE_ROW} from '../lib/sanity.js'
+import {accent} from '../lib/text.js'
+
+const home = (await client.fetch(`*[_id == "homePage"][0]{
+  ...,
+  work{..., items[]{size, "sample": sample->${SAMPLE}}},
+  writing{..., "articles": articles[]->${ARTICLE_ROW}}
+}`)) || {}
+const latest = await client.fetch(`*[_type == "article" && defined(slug.current)] | order(date desc)[0...4]${ARTICLE_ROW}`)
+const settings = (await getSettings()) || {}
+
+const {hero = {}, about = {}, services = {}, process = {}, work = {}, writing = {}, contact = {}, seo = {}} = home
+const articles = (writing.articles || []).filter(Boolean).length ? writing.articles.filter(Boolean) : latest
+const workItems = (work.items || []).filter((i: any) => i?.sample)
+const pad = (n: number) => `/${String(n).padStart(2, '0')}`
+const mail = settings.email ? `mailto:${settings.email}` : '#contact'
+---
+<Layout
+  title={seo.title || `${settings.name || 'Shoyaib'} — Editor, Writer & Digital Marketer`}
+  description={seo.description}
+  shareDescription={seo.shareDescription}
+  path="/"
+  preloader
+  lightbox
+  script="main"
+  personJsonLd
+  nav={[
+    {href: '#about', label: 'About'},
+    {href: '#services', label: 'Services'},
+    {href: '#work', label: 'Work'},
+    {href: '#writing', label: 'Writing'},
+    {href: '#contact', label: "Let's Talk", cta: true},
+  ]}
+  footerLink={{href: '#top', label: 'Back to Top ↑'}}
+>
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="hero-bg-text" data-parallax="0.15" aria-hidden="true">{hero.backgroundWord}</div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="line"></span>
+        <span class="eyebrow">{hero.eyebrow}</span>
+      </div>
+      <h1 class="hero-title" set:html={accent(hero.headline, 'accent-word')} />
+      <p class="hero-sub">{hero.intro}</p>
+      <div class="hero-meta">
+        {(hero.facts || []).map((f: any) => (
+          <div class="hero-meta-item">
+            <span class="label">{f.label}</span>
+            <span class="value">{f.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span class="hero-scroll-text">Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee">
+    <div class="marquee-track">
+      {(home.marquee || []).map((m: string) => <span class="marquee-item">{m}</span>)}
+    </div>
+  </div>
+
+  <!-- About -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-label">
+          <p class="eyebrow reveal">{about.eyebrow}</p>
+        </div>
+        <div class="about-content">
+          <p class="about-text reveal" data-split set:html={accent(about.mainText, 'highlight')} />
+          {about.secondaryText && (
+            <p class="about-text reveal reveal-delay-1" style="margin-top: 2rem; font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--bone-dim);">{about.secondaryText}</p>
+          )}
+        </div>
+      </div>
+
+      {(about.stats || []).length > 0 && (
+        <div class="stats reveal reveal-delay-2">
+          {about.stats.map((s: any) => (
+            <div class="stat">
+              <div class="stat-number">
+                <span data-count={s.value} data-decimals={s.decimals || undefined} data-prefix={s.prefix || undefined} data-suffix={s.suffix || undefined}>{(s.prefix || '') + '0'}</span>
+                {s.unit && <span class="suffix"> {s.unit}</span>}
+              </div>
+              <div class="stat-label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services section" id="services">
+    <div class="container">
+      <div class="services-header">
+        <div>
+          <p class="eyebrow reveal">{services.eyebrow}</p>
+          <h2 class="reveal" data-split set:html={accent(services.heading)} />
+        </div>
+        {services.intro && <p class="reveal reveal-delay-1" style="max-width: 360px;">{services.intro}</p>}
+      </div>
+      <div class="service-cards">
+        <ServiceCard href="/editing/" number="/01" card={services.editingCard} />
+        <ServiceCard href="/writing/" number="/02" card={services.writingCard} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Process (no .reveal on the steps: they once got stuck invisible, see docs/DECISIONS.md) -->
+  <section class="process section" id="process">
+    <div class="container">
+      <div class="process-header">
+        <p class="eyebrow reveal">{process.eyebrow}</p>
+        <h2 class="reveal" data-split set:html={accent(process.heading)} />
+      </div>
+      <div class="process-steps">
+        {(process.steps || []).map((step: any, i: number) => (
+          <div class="process-step">
+            <span class="process-step-num">{pad(i + 1)}</span>
+            <span class="process-step-title">{step.title}</span>
+            <span class="process-step-desc">{step.text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Work -->
+  <section class="work section" id="work">
+    <div class="container">
+      <div class="work-header">
+        <p class="eyebrow reveal">{work.eyebrow}</p>
+        <h2 class="reveal" data-split set:html={accent(work.heading)} />
+      </div>
+      <div class="work-grid">
+        {workItems.map((item: any) => (
+          <WorkMedia
+            sample={item.sample}
+            variant="work"
+            size={item.size}
+            title={item.sample.homeTitle || item.sample.title}
+            tag={item.sample.kind === 'video' ? 'Video Editing' : 'Static Design'}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Writing Preview -->
+  <section class="writing-preview section" id="writing">
+    <div class="container">
+      <div class="writing-header">
+        <div>
+          <p class="eyebrow reveal">{writing.eyebrow}</p>
+          <h2 class="reveal" data-split set:html={accent(writing.heading)} />
+        </div>
+        <a href="/writing/" class="writing-link magnetic">{writing.linkLabel || 'View All Writing →'}</a>
+      </div>
+      <ArticleRows articles={articles} base="/writing/" short />
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact section" id="contact">
+    <div class="contact-bg-text" data-parallax="0.1" aria-hidden="true">{contact.backgroundWord}</div>
+    <div class="container">
+      <p class="eyebrow contact-eyebrow reveal">{contact.eyebrow}</p>
+      <h2 class="contact-title reveal" data-split set:html={accent(contact.heading)} />
+      {settings.email && <a href={mail} class="contact-email magnetic reveal reveal-delay-1">{settings.email}</a>}
+      <div class="contact-actions reveal reveal-delay-2">
+        {settings.upworkUrl && (
+          <a href={settings.upworkUrl} target="_blank" rel="noopener" class="btn btn-primary magnetic">
+            {contact.primaryButton || 'View Upwork Profile'}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9" /></svg>
+          </a>
+        )}
+        <a href={mail} class="btn btn-ghost magnetic">
+          {contact.secondaryButton || 'Send an Email'}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

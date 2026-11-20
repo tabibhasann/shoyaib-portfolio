@@ -4,6 +4,15 @@ Why things are the way they are. Newest first. Add an entry (date, decision, why
 
 ---
 
+## 2026-11-21 — Sanity CMS + Astro, published by GitHub Actions
+**Decision:** all content moves into Sanity (project `x7xjqilb`, public `production` dataset, Studio at `shoyaib.sanity.studio`). The site becomes an Astro static site that reads Sanity at build time; GitHub Actions builds and deploys to GitHub Pages; a Sanity webhook triggers a rebuild on every publish.
+**Why:** Shoyaib (the user's brother, not technical) must be able to edit everything himself. Sanity was the user's choice and they already use it for other clients. Astro lets us keep the original HTML, CSS, JS and animations byte-for-byte in templates, so the design didn't change. Building static HTML (instead of fetching content in the browser) keeps Google indexing and link previews working and the site fast. Staying on GitHub Pages avoids touching DNS for shoyaibraby.com.
+**Details:** URLs kept identical (`build.format: 'preserve'`). Editors mark accent words with `*stars*`. Ordered lists auto-append anything missing so nothing can be "lost". Singleton pages can't be deleted or duplicated in the Studio. Videos/images now live only in Sanity. Considered and rejected: Framer/Webflow (monthly cost, rebuild the design, lose custom animations), Decap/Pages CMS (plainer editing for a non-technical person), client-side fetching (bad for SEO and link previews).
+
+## 2026-11-21 — Footer `.reveal` made visible via `.footer.in`
+**Decision:** CSS rule `.footer.in .reveal { opacity: 1; transform: none }`.
+**Why:** the footer is at the very bottom, so its items could never reach the "top 85%" trigger line and stayed invisible on every page of the live site. `main.js`/`article.js` already add `.in` to the footer.
+
 ## 2026-11-09 — Shared AI workspace files
 **Decision:** `AGENTS.md` is the single rulebook for all AI tools; `CLAUDE.md` just imports it; `docs/STATUS.md` is the hand-off note between sessions; `docs/DECISIONS.md` (this file) records reasons.
 **Why:** the user works with both Codex and Claude Code and wants any session to pick up the project without re-explaining it. Same setup across all their projects.

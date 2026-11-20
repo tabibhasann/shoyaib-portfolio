@@ -1,0 +1,14 @@
+---
+import {accent} from '../lib/text.js'
+interface Props { header?: {eyebrow?: string; heading?: string; intro?: string}; back?: {href: string; label: string} }
+const {header = {}, back} = Astro.props
+---
+<section class="page-header">
+  <div class="page-header-eyebrow">
+    <span class="line"></span>
+    <span class="eyebrow">{header.eyebrow}</span>
+  </div>
+  <h1 data-split set:html={accent(header.heading, 'italic')} />
+  {header.intro && <p class="page-header-sub reveal">{header.intro}</p>}
+  {back && <a href={back.href} class="page-header-back">{back.label}</a>}
+</section>

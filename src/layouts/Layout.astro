@@ -1,0 +1,143 @@
+---
+/**
+ * Shared page shell: <head> (SEO + link previews), the decorative layers, nav, footer and scripts.
+ * Mirrors the original hand-written pages exactly so css/style.css and js/*.js keep working.
+ */
+import {getSettings} from '../lib/sanity.js'
+
+interface NavLink { href: string; label: string; cta?: boolean }
+interface Props {
+  title: string
+  description?: string
+  shareDescription?: string
+  path: string
+  ogType?: 'website' | 'article'
+  publishedTime?: string
+  preloader?: boolean
+  progress?: 'scroll' | 'reading'
+  nav: NavLink[]
+  footerLink: {href: string; label: string}
+  lightbox?: boolean
+  script: 'main' | 'article'
+  personJsonLd?: boolean
+}
+
+const {
+  title, description = '', shareDescription, path, ogType = 'website', publishedTime,
+  preloader = false, progress = 'scroll', nav, footerLink, lightbox = false, script, personJsonLd = false,
+} = Astro.props
+
+const settings = (await getSettings()) || {}
+const site = 'https://shoyaibraby.com'
+const url = site + path
+const name = settings.name || 'Shoyaib'
+const shareImage = settings.shareImageUrl
+  ? `${settings.shareImageUrl}?w=1200&h=630&fit=crop&fm=jpg`
+  : `${site}/assets/images/profile/upwork-profile-card.png`
+const ogDescription = shareDescription || description
+const year = new Date().getFullYear()
+
+const jsonLd = personJsonLd
+  ? JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name,
+      description: settings.personDescription || description,
+      email: settings.email,
+      url: site,
+      sameAs: settings.upworkUrl ? [settings.upworkUrl] : [],
+    })
+  : null
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content={description} />
+  <meta name="author" content={name} />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0c0b09" />
+  <link rel="canonical" href={url} />
+  <title>{title}</title>
+
+  <!-- Open Graph / link previews -->
+  <meta property="og:type" content={ogType} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={ogDescription} />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content={url} />
+  <meta property="og:image" content={shareImage} />
+  {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={ogDescription} />
+  <meta name="twitter:image" content={shareImage} />
+
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='serif' font-style='italic'>S</text></svg>" />
+</head>
+<body class="no-js">
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <div class={progress === 'reading' ? 'reading-progress' : 'scroll-progress'} aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  {preloader && (
+    <div class="preloader" role="status" aria-live="polite" aria-label="Loading">
+      <div class="preloader-count" aria-hidden="true">0</div>
+      <div class="preloader-label" aria-hidden="true">Loading Experience</div>
+      <div class="preloader-bar" aria-hidden="true"><div class="preloader-bar-fill"></div></div>
+    </div>
+  )}
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="/" class="nav-brand magnetic">{name}<span class="dot">.</span></a>
+    <div class="nav-links">
+      {nav.map((l) => <a href={l.href} class={l.cta ? 'nav-link nav-cta magnetic' : 'nav-link'}>{l.label}</a>)}
+    </div>
+    <div class="nav-burger" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></div>
+  </nav>
+
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <span class="footer-brand reveal">{settings.tagline || `${name} — Editor & Writer`}</span>
+    <div class="footer-social reveal reveal-delay-1">
+      {settings.upworkUrl && <a href={settings.upworkUrl} target="_blank" rel="noopener">Upwork</a>}
+      {settings.email && <a href={`mailto:${settings.email}`}>Email</a>}
+      <a href={footerLink.href}>{footerLink.label}</a>
+    </div>
+    <span class="footer-copy reveal reveal-delay-2">© {year} {name}. All rights reserved.</span>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+  </button>
+
+  {lightbox && (
+    <div class="lightbox">
+      <button class="lightbox-close" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+      <div class="lightbox-content"></div>
+    </div>
+  )}
+
+  <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script is:inline src={`/js/${script}.js`}></script>
+  {jsonLd && <script is:inline type="application/ld+json" set:html={jsonLd} />}
+</body>
+</html>

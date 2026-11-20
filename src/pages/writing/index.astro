@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import PageHeader from '../../components/PageHeader.astro'
+import ArticleRows from '../../components/ArticleRows.astro'
+import {client, getSettings, ARTICLE_ROW, withRemainder} from '../../lib/sanity.js'
+
+const page = (await client.fetch(`*[_id == "writingPage"][0]{..., "articles": articles[]->${ARTICLE_ROW}}`)) || {}
+const all = await client.fetch(`*[_type == "article" && defined(slug.current)] | order(date desc)${ARTICLE_ROW}`)
+const articles = withRemainder(page.articles, all).filter((a: any) => a.slug)
+const settings = (await getSettings()) || {}
+const seo = page.seo || {}
+---
+<Layout
+  title={seo.title || `Writing — ${settings.name || 'Shoyaib'}`}
+  description={seo.description}
+  shareDescription={seo.shareDescription}
+  path="/writing/"
+  script="article"
+  nav={[
+    {href: '/#about', label: 'About'},
+    {href: '/editing/', label: 'Editing'},
+    {href: '/#work', label: 'Work'},
+    {href: '/#contact', label: "Let's Talk", cta: true},
+  ]}
+  footerLink={{href: '/', label: 'Home ↑'}}
+>
+  <PageHeader header={page.header} />
+  <section class="writing-preview" style="padding-top: 0;">
+    <div class="container">
+      <ArticleRows articles={articles} base="/writing/" />
+    </div>
+  </section>
+</Layout>

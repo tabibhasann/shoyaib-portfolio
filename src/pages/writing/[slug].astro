@@ -1,0 +1,52 @@
+---
+/** One page per article: builds /writing/<slug>.html for every published article in Sanity. */
+import Layout from '../../layouts/Layout.astro'
+import {client, getSettings} from '../../lib/sanity.js'
+import {articleHTML, longDate} from '../../lib/text.js'
+
+export async function getStaticPaths() {
+  const articles = await client.fetch(`*[_type == "article" && defined(slug.current)]{..., "slug": slug.current}`)
+  return articles.map((article: any) => ({params: {slug: article.slug}, props: {article}}))
+}
+
+const {article} = Astro.props
+const settings = (await getSettings()) || {}
+const name = settings.name || 'Shoyaib'
+const seo = article.seo || {}
+---
+<Layout
+  title={seo.title || `${article.title} — ${name}`}
+  description={seo.description || article.subtitle}
+  shareDescription={seo.shareDescription}
+  path={`/writing/${article.slug}.html`}
+  ogType="article"
+  publishedTime={article.date}
+  progress="reading"
+  script="article"
+  nav={[
+    {href: '/', label: 'Home'},
+    {href: '/writing/', label: 'Writing'},
+    {href: '/#contact', label: "Let's Talk", cta: true},
+  ]}
+  footerLink={{href: '/', label: 'Home ↑'}}
+>
+  <section class="article-hero">
+    <div class="container-narrow">
+      <p class="eyebrow">{article.category}</p>
+      {article.date && <time class="meta-date" datetime={article.date}>{longDate(article.date)}</time>}
+      <h1>{article.title}</h1>
+      {article.subtitle && <p class="article-hero-sub">{article.subtitle}</p>}
+    </div>
+  </section>
+
+  <section class="article-body">
+    <div class="container-narrow">
+      <article set:html={articleHTML(article.body)} />
+    </div>
+  </section>
+
+  <div class="article-footer">
+    <a href="/writing/" class="article-footer-back magnetic">← Back to Writing</a>
+    <span class="article-footer-share">{name} · {article.category}</span>
+  </div>
+</Layout>

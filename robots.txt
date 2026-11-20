@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://shoyaib.com/sitemap.xml

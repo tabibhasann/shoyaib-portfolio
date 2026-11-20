@@ -1,0 +1,15 @@
+---
+interface Props { articles: any[]; base: string; short?: boolean }
+const {articles, base, short = false} = Astro.props
+const pad = (n: number) => `/${String(n).padStart(2, '0')}`
+---
+<div class="article-list">
+  {articles.map((a, i) => (
+    <a href={`${base}${a.slug}.html`} class="article-row magnetic" data-cursor-text="Read">
+      <span class="article-row-num">{pad(i + 1)}</span>
+      <span class="article-row-title">{(short && a.shortTitle) || a.title}</span>
+      <span class="article-row-cat">{a.category}</span>
+      <span class="article-row-arrow">→</span>
+    </a>
+  ))}
+</div>

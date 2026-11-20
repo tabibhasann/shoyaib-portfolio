@@ -1,0 +1,16 @@
+---
+import Arrow from './Arrow.astro'
+interface Props { href: string; number: string; card?: {title?: string; text?: string; linkLabel?: string} }
+const {href, number, card = {}} = Astro.props
+---
+<a href={href} class="service-card magnetic" data-cursor-text="Open">
+  <div class="service-card-top">
+    <span class="service-card-number">{number}</span>
+    <div class="service-card-icon"><Arrow /></div>
+  </div>
+  <div class="service-card-body">
+    <h3>{card.title}</h3>
+    {card.text && <p>{card.text}</p>}
+    {card.linkLabel && <span class="service-card-link">{card.linkLabel} <span class="arrow">→</span></span>}
+  </div>
+</a>

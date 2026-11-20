@@ -1,0 +1,38 @@
+---
+/** Shared template for the Video editing and Static design gallery pages. */
+import Layout from '../layouts/Layout.astro'
+import PageHeader from './PageHeader.astro'
+import WorkMedia from './WorkMedia.astro'
+import {client, getSettings, SAMPLE, withRemainder} from '../lib/sanity.js'
+
+interface Props { docId: 'videoPage' | 'staticPage'; kind: 'video' | 'image'; path: string; fallbackTitle: string }
+const {docId, kind, path, fallbackTitle} = Astro.props
+
+const page = (await client.fetch(`*[_id == $id][0]{..., "samples": samples[]->${SAMPLE}}`, {id: docId})) || {}
+const all = await client.fetch(`*[_type == "workSample" && kind == $kind] | order(_createdAt asc)${SAMPLE}`, {kind})
+const samples = withRemainder((page.samples || []).filter((s: any) => s?.kind === kind), all)
+const settings = (await getSettings()) || {}
+const seo = page.seo || {}
+---
+<Layout
+  title={seo.title || `${fallbackTitle} — ${settings.name || 'Shoyaib'}`}
+  description={seo.description}
+  shareDescription={seo.shareDescription}
+  path={path}
+  lightbox
+  script="main"
+  nav={[
+    {href: '/#about', label: 'About'},
+    {href: '/editing/', label: 'Editing'},
+    {href: '/writing/', label: 'Writing'},
+    {href: '/#contact', label: "Let's Talk", cta: true},
+  ]}
+  footerLink={{href: '/editing/', label: 'Editing ↑'}}
+>
+  <PageHeader header={page.header} back={{href: '/editing/', label: '← Back to Editing'}} />
+  <section class="gallery">
+    <div class="gallery-grid">
+      {samples.map((s: any) => <WorkMedia sample={s} variant="gallery" ariaSuffix={kind === 'image' ? ' full size' : ''} />)}
+    </div>
+  </section>
+</Layout>

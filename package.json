@@ -1,0 +1,17 @@
+{
+  "name": "shoyaib-portfolio-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "studio": "npm --prefix studio run dev"
+  },
+  "dependencies": {
+    "@portabletext/to-html": "^6.0.0",
+    "@sanity/client": "^8.17.0",
+    "@sanity/image-url": "^2.2.0",
+    "astro": "^7.4.13"
+  }
+}

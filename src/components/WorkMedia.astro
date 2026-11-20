@@ -1,0 +1,31 @@
+---
+/**
+ * One clickable video/image tile. `variant` picks the class names used by the home grid
+ * (work-item …) or the gallery pages (gallery-card …). Clicking opens the lightbox (js/main.js).
+ */
+import {imageUrl} from '../lib/sanity.js'
+interface Props { sample: any; variant: 'work' | 'gallery'; size?: string; title?: string; tag?: string; ariaSuffix?: string }
+const {sample, variant, size, title = sample.title, tag = sample.tag, ariaSuffix = ''} = Astro.props
+const isVideo = sample.kind === 'video'
+const src = isVideo ? sample.videoUrl : imageUrl(sample.image, 1400)
+const full = isVideo ? sample.videoUrl : imageUrl(sample.image, 2400)
+const p = variant === 'work' ? 'work-item' : 'gallery-card'
+const cls = variant === 'work' ? `work-item ${size || 'small'}` : 'gallery-card'
+const playSize = variant === 'work' ? 20 : 18
+---
+{src && (
+  <div class={cls} data-lightbox={full} data-lightbox-type={isVideo ? 'video' : 'image'} data-cursor-text={isVideo ? 'Play' : 'View'} role="button" tabindex="0" aria-label={`${isVideo ? 'Play' : 'View'} ${title}${ariaSuffix}`}>
+    {isVideo
+      ? <video src={src} muted loop playsinline preload="metadata" aria-hidden="true"></video>
+      : <img src={src} alt={sample.alt || title} loading="lazy" decoding="async" aria-hidden="true" />}
+    {isVideo && (
+      <div class={`${p}-play`}>
+        <svg width={playSize} height={playSize} viewBox="0 0 24 24" fill="currentColor" style="color: var(--ink); margin-left: 3px;"><path d="M8 5v14l11-7z" /></svg>
+      </div>
+    )}
+    <div class={`${p}-overlay`}>
+      <span class={`${p}-tag`}>{tag}</span>
+      <span class={`${p}-title`}>{title}</span>
+    </div>
+  </div>
+)}

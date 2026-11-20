@@ -1,0 +1,48 @@
+# Builds the site from Sanity content and publishes it to GitHub Pages (shoyaibraby.com).
+# Runs when:
+#   - code is pushed to main
+#   - Shoyaib publishes something in the Studio (Sanity webhook -> "sanity-publish")
+#   - someone clicks "Run workflow" on the Actions tab (manual rebuild)
+name: Build and publish site
+
+on:
+  push:
+    branches: [main]
+  repository_dispatch:
+    types: [sanity-publish]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Several quick publishes in a row: finish the running deploy, then build once more with the latest content.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
