@@ -3061,3 +3061,23 @@ h1, h2, h3, .hero-title, .contact-title, .page-header h1, .article-hero h1 {
 .marquee { background: linear-gradient(90deg, #0a84ff, #38bdf8) !important; border-top: none !important; border-bottom: none !important; box-shadow: 0 12px 40px rgba(10, 132, 255, 0.25) !important; }
 .marquee-item { color: #fff !important; }
 .marquee-item::after { color: #fff !important; opacity: 0.9; }
+
+/* Ali Abdaal-style buttons: sky blue, turn black on hover/tap */
+.nav-cta, .contact .btn, .contact .btn-primary, .contact .btn-ghost {
+  background: #7dc8ef !important;
+  color: #16142a !important;
+  border: none !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  font-weight: 600 !important;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease !important;
+}
+.nav-cta *, .contact .btn * { color: inherit !important; }
+.nav-cta:hover, .nav-cta:active, .nav-cta:focus-visible,
+.contact .btn:hover, .contact .btn:active, .contact .btn:focus-visible {
+  background: #1c1a29 !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
