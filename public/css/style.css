@@ -3125,3 +3125,5 @@ h1, h2, h3, .hero-title, .contact-title, .page-header h1, .article-hero h1 {
   0% { background-position: 0% 50%; }
   100% { background-position: 300% 50%; }
 }
+
+.hero-meta-item span:first-child { color: #1A1623 !important; opacity: 0.65; }
