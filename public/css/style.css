@@ -3172,3 +3172,38 @@ h1, h2, h3, .hero-title, .contact-title, .page-header h1, .article-hero h1 {
 /* About photo: flipped horizontally */
 .about-photo img { transform: translateX(-50%) scaleX(-1) !important; }
 .about-photo:hover img { transform: translateX(-50%) scaleX(-1) scale(1.03) !important; }
+
+/* Stats cards: same colours and hover effect as the hero chips */
+.stats { background: none !important; border-top: none !important; border-bottom: none !important; overflow: visible !important; }
+.stat {
+  position: relative; overflow: visible !important;
+  border: none !important;
+  -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+  box-shadow: 0 6px 20px rgba(26, 22, 35, 0.08) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
+}
+.stat:nth-child(4n+1) { background: #F6D67B !important; }
+.stat:nth-child(4n+2) { background: #C5B2F6 !important; }
+.stat:nth-child(4n+3) { background: #EF9C75 !important; }
+.stat:nth-child(4n+4) { background: #8EC5FF !important; }
+.stat, .stat *, .stat-number .suffix { color: #1A1623 !important; }
+.stat-label { opacity: 0.65; }
+.stat::after { display: none !important; }
+.stat::before {
+  content: ""; position: absolute; inset: -3px;
+  border-radius: calc(var(--radius) + 3px); padding: 3px;
+  background: linear-gradient(120deg, #0a84ff, #C5B2F6, #EF9C75, #F6D67B, #0a84ff);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0; transition: opacity 0.35s ease; pointer-events: none;
+}
+.stat:hover {
+  background-color: inherit;
+  transform: scale(1.06) !important;
+  box-shadow: 0 16px 40px rgba(10, 132, 255, 0.22) !important;
+  z-index: 2;
+}
+.stat:hover::before { opacity: 1; animation: chipBorder 2.5s linear infinite; }
+.stat:hover .stat-number { transform: none !important; }
