@@ -3230,3 +3230,6 @@ h1, h2, h3, .hero-title, .contact-title, .page-header h1, .article-hero h1 {
   .about-photo { position: relative !important; inset: auto; max-width: 300px !important; margin: 0 0 1.5rem !important; }
   .about-photo img { height: auto !important; }
 }
+
+/* Stop letters being cut off (tails of y, p, j, commas, slanted letters) */
+.split-word { padding: 0.1em 0.08em 0.22em !important; margin: -0.1em -0.08em -0.22em !important; }
