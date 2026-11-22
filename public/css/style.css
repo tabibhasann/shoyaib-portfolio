@@ -2900,3 +2900,146 @@ body.no-anim .marquee-track {
     clip-path: none !important;
   }
 }
+
+
+/* ============================================
+   GLASS THEME (Apple-style, light) — overrides
+   ============================================ */
+:root {
+  --ink: #f4f8fd;
+  --ink-soft: rgba(255, 255, 255, 0.55);
+  --ink-card: rgba(255, 255, 255, 0.65);
+  --bone: #0b1f44;
+  --bone-dim: #3d4b63;
+  --bone-faint: #6b7890;
+  --accent: #0a84ff;
+  --accent-soft: #38bdf8;
+  --accent-glow: rgba(10, 132, 255, 0.12);
+  --line: rgba(11, 31, 68, 0.08);
+  --line-strong: rgba(11, 31, 68, 0.14);
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", sans-serif;
+  --font-mono: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
+  --radius: 22px;
+  --glass-bg: rgba(255, 255, 255, 0.58);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-shadow: 0 10px 40px rgba(11, 31, 68, 0.08), 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+html, body {
+  background: #f4f8fd;
+  color: var(--bone);
+}
+body {
+  background:
+    radial-gradient(900px 600px at 8% -5%, rgba(56, 189, 248, 0.28), transparent 60%),
+    radial-gradient(800px 600px at 100% 15%, rgba(129, 140, 248, 0.22), transparent 60%),
+    radial-gradient(900px 700px at 50% 110%, rgba(56, 189, 248, 0.18), transparent 60%),
+    #f4f8fd;
+  background-attachment: fixed;
+  cursor: auto !important;
+}
+::selection { background: rgba(10, 132, 255, 0.2); color: var(--bone); }
+
+/* Remove dark-mode decoration */
+.grain, .vignette, .cursor-dot, .cursor-ring, .hero-bg-text, .contact-bg-text { display: none !important; }
+a, button, .work-item, .gallery-card { cursor: pointer !important; }
+
+/* Glass navigation */
+.nav {
+  background: var(--glass-bg) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--line);
+  mix-blend-mode: normal !important;
+}
+.nav-brand, .nav-link { color: var(--bone) !important; }
+.nav-brand { font-weight: 700; letter-spacing: -0.02em; }
+.nav-link { font-family: var(--font-body); font-weight: 500; letter-spacing: 0; text-transform: none; font-size: 0.95rem; }
+.nav-cta, .btn-primary {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(10, 132, 255, 0.3);
+}
+.nav-cta:hover, .btn-primary:hover { background: #0071e3 !important; color: #fff !important; }
+.btn-ghost {
+  background: var(--glass-bg) !important;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 999px !important;
+  color: var(--bone) !important;
+  box-shadow: var(--glass-shadow);
+}
+
+/* Headings: bold, Apple-like */
+h1, h2, h3, .hero-title, .contact-title, .page-header h1, .article-hero h1 {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.035em !important;
+  color: var(--bone);
+}
+.hero-title .accent-word, .accent-word, em {
+  font-style: normal !important;
+  background: linear-gradient(90deg, #0a84ff, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+.eyebrow, .hero-eyebrow .eyebrow, .about-label, .page-header-eyebrow, .contact-eyebrow, .hero-meta-item span:first-child, .stat-label, .work-item-tag, .gallery-card-tag, .article-row-cat {
+  font-family: var(--font-body) !important;
+  letter-spacing: 0.08em;
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+.hero-sub, .about-text, p { color: var(--bone-dim); }
+.hero-sub { font-size: clamp(1.1rem, 1.6vw, 1.3rem); line-height: 1.6; }
+
+/* Glass cards */
+.service-card, .process-step, .stat, .hero-meta-item, .article-row, .contact, .gallery-card, .writing-preview .article-row {
+  background: var(--glass-bg) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  backdrop-filter: blur(24px) saturate(170%);
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--glass-shadow);
+}
+.hero-meta { gap: 0.75rem; }
+.hero-meta-item { padding: 0.9rem 1.2rem; }
+.stat { padding: 1.4rem; }
+.process-step { padding: 1.8rem; }
+.article-row { margin-bottom: 0.75rem; padding: 1.2rem 1.5rem !important; }
+.contact { margin: 0 var(--gutter); padding: clamp(2rem, 6vw, 5rem) !important; }
+.service-card:hover, .article-row:hover, .gallery-card:hover { transform: translateY(-4px); box-shadow: 0 18px 50px rgba(11, 31, 68, 0.12); }
+
+/* Work tiles: rounded, shadowed, show the design */
+.work-item, .gallery-card {
+  border-radius: var(--radius) !important;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(11, 31, 68, 0.12);
+  background: #fff !important;
+  clip-path: none !important;
+}
+.work-item img, .gallery-card img { object-fit: cover; }
+.work-item-overlay, .gallery-card-overlay {
+  background: linear-gradient(to top, rgba(11, 31, 68, 0.55), transparent 55%) !important;
+}
+.work-item-title, .gallery-card-title { color: #fff !important; }
+
+/* Lines and footer */
+.footer { border-top: 1px solid var(--line); background: var(--glass-bg); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+.footer a, .footer span { color: var(--bone-dim) !important; }
+.marquee { border-color: var(--line) !important; }
+.marquee-item { color: var(--bone-faint) !important; }
+.back-to-top { background: var(--glass-bg) !important; -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); color: var(--bone) !important; border: 1px solid var(--glass-border) !important; }
+.scroll-progress, .reading-progress { background: linear-gradient(90deg, #0a84ff, #38bdf8) !important; }
+.lightbox { background: rgba(244, 248, 253, 0.85) !important; -webkit-backdrop-filter: blur(30px); backdrop-filter: blur(30px); }
+.lightbox-close { color: var(--bone) !important; }
+.nav-burger span { background: var(--bone) !important; }
+
+.stats { gap: 1rem !important; }
+.marquee-item { font-style: normal !important; font-weight: 600 !important; }
+.preloader { background: #f4f8fd !important; }
