@@ -3127,3 +3127,8 @@ h1, h2, h3, .hero-title, .contact-title, .page-header h1, .article-hero h1 {
 }
 
 .hero-meta-item span:first-child { color: #1A1623 !important; opacity: 0.65; }
+
+/* Slimmer scrolling bar (about half the height) */
+.marquee { padding: 0.7rem 0 !important; }
+.marquee-item { font-size: clamp(1rem, 1.8vw, 1.45rem) !important; }
+.marquee-track { gap: 2rem !important; }
