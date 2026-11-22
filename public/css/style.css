@@ -3032,13 +3032,15 @@ h1, h2, h3, .hero-title, .contact-title, .page-header h1, .article-hero h1 {
 .footer { border-top: 1px solid var(--line); background: var(--glass-bg); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
 .footer a, .footer span { color: var(--bone-dim) !important; }
 .marquee {
-  margin: 0 var(--gutter);
-  border-radius: 28px;
+  margin: 0;
+  border-radius: 0;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.45) !important;
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  border: none !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.9) !important;
+  border-bottom: 1px solid rgba(11, 31, 68, 0.06) !important;
   box-shadow: 0 12px 40px rgba(11, 31, 68, 0.08), 0 1px 0 rgba(255, 255, 255, 0.95) inset, 0 -1px 0 rgba(11, 31, 68, 0.04) inset;
 }
 .marquee-item { color: var(--bone-faint) !important; }
