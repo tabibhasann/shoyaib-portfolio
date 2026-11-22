@@ -3164,3 +3164,7 @@ h1, h2, h3, .hero-title, .contact-title, .page-header h1, .article-hero h1 {
 .about-photo:hover img { transform: translateX(-50%) scale(1.03); }
 @media (max-width: 1024px) { .about-photo { max-width: 320px; margin: 1.25rem auto 0; } }
 @media (max-width: 600px) { .about-photo { max-width: 280px; } }
+
+/* About photo: show full portrait (head to waist) */
+.about-photo { aspect-ratio: 3 / 4 !important; }
+.about-photo img { width: auto !important; height: 94% !important; max-width: none !important; }
