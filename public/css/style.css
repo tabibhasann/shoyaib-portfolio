@@ -3064,8 +3064,8 @@ h1, h2, h3, .hero-title, .contact-title, .page-header h1, .article-hero h1 {
 
 /* Ali Abdaal-style buttons: sky blue, turn black on hover/tap */
 .nav-cta, .contact .btn, .contact .btn-primary, .contact .btn-ghost {
-  background: #7dc8ef !important;
-  color: #16142a !important;
+  background: #0a84ff !important;
+  color: #ffffff !important;
   border: none !important;
   border-radius: 999px !important;
   box-shadow: none !important;
