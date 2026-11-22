@@ -3053,3 +3053,6 @@ h1, h2, h3, .hero-title, .contact-title, .page-header h1, .article-hero h1 {
 .stats { gap: 1rem !important; }
 .marquee-item { font-style: normal !important; font-weight: 600 !important; }
 .preloader { background: #f4f8fd !important; }
+
+/* How I work section hidden (content kept in Sanity) */
+#process, .process { display: none !important; }
