@@ -3056,3 +3056,8 @@ h1, h2, h3, .hero-title, .contact-title, .page-header h1, .article-hero h1 {
 
 /* How I work section hidden (content kept in Sanity) */
 #process, .process { display: none !important; }
+
+/* Scrolling bar: bold Apple blue gradient, white words and stars */
+.marquee { background: linear-gradient(90deg, #0a84ff, #38bdf8) !important; border-top: none !important; border-bottom: none !important; box-shadow: 0 12px 40px rgba(10, 132, 255, 0.25) !important; }
+.marquee-item { color: #fff !important; }
+.marquee-item::after { color: #fff !important; opacity: 0.9; }
