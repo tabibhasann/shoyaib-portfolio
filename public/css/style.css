@@ -3081,3 +3081,47 @@ h1, h2, h3, .hero-title, .contact-title, .page-header h1, .article-hero h1 {
   color: #ffffff !important;
   transform: translateY(-1px);
 }
+
+/* Hero info chips: Ali Abdaal colours + hover zoom with gradient border */
+.hero-meta-item {
+  position: relative;
+  border: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 6px 20px rgba(26, 22, 35, 0.08) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
+  cursor: default;
+}
+.hero-meta-item:nth-child(1) { background: #F6D67B !important; }
+.hero-meta-item:nth-child(2) { background: #C5B2F6 !important; }
+.hero-meta-item:nth-child(3) { background: #EF9C75 !important; }
+.hero-meta-item, .hero-meta-item * { color: #1A1623 !important; }
+.hero-meta-item span:first-child { opacity: 0.7; }
+.hero-meta-item::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: calc(var(--radius) + 3px);
+  padding: 3px;
+  background: linear-gradient(120deg, #0a84ff, #C5B2F6, #EF9C75, #F6D67B, #0a84ff);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.hero-meta-item:hover {
+  transform: scale(1.06) !important;
+  box-shadow: 0 16px 40px rgba(10, 132, 255, 0.22) !important;
+  z-index: 2;
+}
+.hero-meta-item:hover::before {
+  opacity: 1;
+  animation: chipBorder 2.5s linear infinite;
+}
+@keyframes chipBorder {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
