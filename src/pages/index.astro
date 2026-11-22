@@ -74,6 +74,9 @@ const mail = settings.email ? `mailto:${settings.email}` : '#contact'
       <div class="about-grid">
         <div class="about-label">
           <p class="eyebrow reveal">{about.eyebrow}</p>
+          <figure class="about-photo reveal">
+            <img src="/assets/images/abu-musa.webp" alt="Abu Musa, Marketing & Creative Lead" width="520" height="932" loading="lazy" decoding="async" />
+          </figure>
         </div>
         <div class="about-content">
           <p class="about-text reveal" data-split set:html={accent(about.mainText, 'highlight')} />
