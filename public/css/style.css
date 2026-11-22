@@ -3207,3 +3207,26 @@ h1, h2, h3, .hero-title, .contact-title, .page-header h1, .article-hero h1 {
 }
 .stat:hover::before { opacity: 1; animation: chipBorder 2.5s linear infinite; }
 .stat:hover .stat-number { transform: none !important; }
+
+/* About photo v2: no card background, top and bottom aligned with the text */
+.about-grid { align-items: stretch !important; }
+.about-label { position: relative !important; top: auto !important; }
+.about-label .eyebrow { position: absolute; top: -2.5rem; left: 0; margin: 0 !important; }
+.about-photo {
+  position: absolute !important; inset: 0; margin: 0 !important;
+  max-width: none !important; aspect-ratio: auto !important;
+  background: none !important; border: none !important; box-shadow: none !important;
+  border-radius: 0 !important; overflow: visible !important;
+}
+.about-photo img {
+  position: static !important; width: 100% !important; height: 100% !important; max-width: none !important;
+  object-fit: contain; object-position: right top;
+  transform: scaleX(-1) !important;
+  filter: drop-shadow(0 18px 30px rgba(26,22,35,0.18));
+}
+.about-photo:hover img { transform: scaleX(-1) scale(1.02) !important; }
+@media (max-width: 1024px) {
+  .about-label .eyebrow { position: static; margin-bottom: 1rem !important; }
+  .about-photo { position: relative !important; inset: auto; max-width: 300px !important; margin: 0 0 1.5rem !important; }
+  .about-photo img { height: auto !important; }
+}
