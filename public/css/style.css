@@ -12,9 +12,9 @@
   --bone: #ece5d6;
   --bone-dim: #b8b0a0;
   --bone-faint: #6b6557;
-  --accent: #ff4d24;
-  --accent-soft: #ff6b3d;
-  --accent-glow: rgba(255, 77, 36, 0.15);
+  --accent: #38bdf8;
+  --accent-soft: #7dd3fc;
+  --accent-glow: rgba(56, 189, 248, 0.15);
   --line: rgba(236, 229, 214, 0.08);
   --line-strong: rgba(236, 229, 214, 0.15);
 
@@ -94,7 +94,7 @@
   background: linear-gradient(90deg, var(--accent), var(--bone));
   z-index: 101;
   transition: width 0.05s linear;
-  box-shadow: 0 0 6px rgba(255, 77, 36, 0.4);
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.4);
 }
 
 /* ---------- Vignette ---------- */
@@ -141,7 +141,7 @@
   background: var(--accent);
   border-color: var(--accent);
   color: var(--ink);
-  box-shadow: 0 0 20px rgba(255, 77, 36, 0.3);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
 }
 body.no-cursor .back-to-top {
   cursor: pointer;
@@ -562,7 +562,7 @@ body.no-cursor .cursor-ring {
 
 .nav-cta:hover {
   background: var(--accent);
-  color: var(--bone);
+  color: var(--ink);
 }
 
 .nav-burger {
@@ -1204,7 +1204,7 @@ body.no-cursor .cursor-ring {
   opacity: 0;
   transition: opacity 0.4s, transform 0.4s var(--ease-out);
   z-index: 3;
-  box-shadow: 0 0 0 0 rgba(255, 77, 36, 0.5);
+  box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.5);
 }
 
 .work-item:hover .work-item-play {
@@ -1214,8 +1214,8 @@ body.no-cursor .cursor-ring {
 }
 
 @keyframes playPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 77, 36, 0.5); }
-  50% { box-shadow: 0 0 0 16px rgba(255, 77, 36, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.5); }
+  50% { box-shadow: 0 0 0 16px rgba(56, 189, 248, 0); }
 }
 
 /* ---------- Writing Preview ---------- */
