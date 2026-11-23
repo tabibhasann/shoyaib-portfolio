@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From the Big Bang to the First Life on Earth</title>
+<meta name="description" content="A simple, picture-filled guide for children: how the universe began with the Big Bang, made stars, formed the Sun and Earth, and started life.">
+<style>
+  :root {
+    --navy: #023852;
+    --teal: #079fa0;
+    --mint: #9fd8c5;
+    --yellow: #fac005;
+    --red: #dc2e2f;
+    --ink: #0b2433;
+  }
+  * { box-sizing: border-box; }
+  html { background: #ffffff; }
+  body {
+    margin: 0;
+    font-family: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 18px;
+    background:
+      radial-gradient(600px 420px at 4% 6%, rgba(159, 216, 197, 0.45), transparent 60%),
+      radial-gradient(600px 420px at 98% 22%, rgba(250, 192, 5, 0.18), transparent 60%),
+      radial-gradient(600px 420px at 2% 55%, rgba(7, 159, 160, 0.16), transparent 60%),
+      radial-gradient(600px 420px at 98% 80%, rgba(220, 46, 47, 0.12), transparent 60%),
+      #ffffff;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 28px 20px 72px; }
+
+  /* Each panel picks its colours from these variables */
+  .stop, header, table {
+    --bg: var(--navy); --fg: #ffffff; --soft: rgba(255,255,255,0.82); --num-bg: var(--yellow); --num-fg: var(--navy);
+    background:
+      radial-gradient(520px 240px at 100% 0%, rgba(255, 255, 255, 0.22), transparent 70%),
+      linear-gradient(150deg, color-mix(in srgb, var(--bg) 82%, white), var(--bg) 55%, color-mix(in srgb, var(--bg) 85%, black));
+    color: var(--fg);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    backdrop-filter: blur(14px) saturate(150%);
+    box-shadow:
+      0 18px 40px color-mix(in srgb, var(--bg) 35%, transparent),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  /* Colour order along the trip */
+  section.stop:nth-of-type(1) { --bg: var(--navy); }
+  section.stop:nth-of-type(2) { --bg: var(--teal); --num-bg: #ffffff; --num-fg: var(--teal); }
+  section.stop:nth-of-type(3) { --bg: var(--yellow); --fg: var(--navy); --soft: rgba(2,56,82,0.85); --num-bg: var(--navy); --num-fg: #ffffff; }
+  section.stop:nth-of-type(4) { --bg: var(--red); --num-bg: var(--yellow); --num-fg: var(--navy); }
+  section.stop:nth-of-type(5) { --bg: var(--mint); --fg: var(--navy); --soft: rgba(2,56,82,0.85); --num-bg: var(--navy); --num-fg: #ffffff; }
+  section.stop:nth-of-type(6) { --bg: var(--navy); --num-bg: var(--mint); --num-fg: var(--navy); }
+  section.stop:nth-of-type(7) { --bg: var(--teal); --num-bg: var(--yellow); --num-fg: var(--navy); }
+  section.stop:nth-of-type(8) { --bg: var(--red); --num-bg: #ffffff; --num-fg: var(--red); }
+  section.stop.idea {
+    --bg: var(--navy); --num-bg: var(--yellow); --num-fg: var(--navy);
+    background:
+      radial-gradient(500px 260px at 0% 0%, rgba(7, 159, 160, 0.55), transparent 70%),
+      radial-gradient(500px 260px at 100% 100%, rgba(220, 46, 47, 0.45), transparent 70%),
+      radial-gradient(400px 220px at 100% 0%, rgba(250, 192, 5, 0.35), transparent 70%),
+      var(--navy);
+    border: 2px dashed rgba(255, 255, 255, 0.7);
+  }
+
+  nav {
+    display: inline-flex; gap: 6px; align-items: center; padding: 8px 16px; border-radius: 999px; font-size: 15px;
+    background: rgba(255, 255, 255, 0.75); border: 1px solid rgba(2, 56, 82, 0.15);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    box-shadow: 0 6px 18px rgba(2, 56, 82, 0.08);
+  }
+  nav a { color: var(--teal) !important; font-weight: 600; }
+
+  header {
+    text-align: center; margin: 22px 0 10px; padding: 46px 28px 40px; border-radius: 32px;
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(420px 260px at 0% 100%, rgba(7, 159, 160, 0.75), transparent 70%),
+      radial-gradient(380px 240px at 100% 0%, rgba(220, 46, 47, 0.55), transparent 70%),
+      radial-gradient(360px 220px at 100% 100%, rgba(250, 192, 5, 0.45), transparent 70%),
+      var(--navy);
+  }
+  header::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6px;
+    background: linear-gradient(90deg, var(--navy), var(--teal), var(--mint), var(--yellow), var(--red));
+  }
+  header h1 { font-size: clamp(30px, 6vw, 50px); line-height: 1.15; margin: 0 0 14px; letter-spacing: -0.5px; color: #fff; }
+  header h1 span {
+    background: linear-gradient(90deg, var(--mint), var(--yellow), #ff8a8a);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  header p { color: rgba(255,255,255,0.88); font-size: 20px; margin: 0 auto; max-width: 640px; }
+
+  /* White glass frames for the drawings */
+  .card {
+    border-radius: 24px; padding: 12px; margin: 22px 0;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(2, 56, 82, 0.12);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    box-shadow: 0 12px 30px rgba(2, 56, 82, 0.12), inset 0 1px 0 #fff;
+    position: relative;
+  }
+  .card::before {
+    content: ""; position: absolute; left: 24px; right: 24px; top: -1px; height: 4px; border-radius: 0 0 4px 4px;
+    background: linear-gradient(90deg, var(--teal), var(--mint), var(--yellow), var(--red));
+  }
+  .stop .card::before { display: none; }
+  .card img { display: block; width: 100%; height: auto; border-radius: 16px; }
+  .stop .card {
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 26px rgba(0, 20, 40, 0.25);
+  }
+
+  .stop { border-radius: 30px; padding: 28px 28px 12px; margin: 14px 0; position: relative; }
+  .stop::before {
+    content: ""; position: absolute; left: 30px; right: 30px; top: 0; height: 2px; border-radius: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.95), transparent);
+  }
+  .stop h2 { margin: 0 0 10px; font-size: 28px; display: flex; align-items: center; gap: 14px; color: var(--fg); letter-spacing: -0.3px; }
+  .stop p { color: var(--fg); }
+  .stop b { color: var(--fg); }
+
+  .num {
+    display: inline-grid; place-items: center; flex: none; width: 48px; height: 48px; border-radius: 50%;
+    background: var(--num-bg); color: var(--num-fg);
+    font-size: 22px; font-weight: 800; border: 3px solid rgba(255,255,255,0.9);
+    box-shadow: 0 6px 16px rgba(0, 20, 40, 0.3);
+  }
+
+  .photo { margin: 20px 0 6px; }
+  .photo img {
+    display: block; width: 100%; height: auto; border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 14px 34px rgba(0, 15, 35, 0.4);
+  }
+  .stop > .photo img { max-width: 680px; margin: 0 auto; }
+  .caption { color: var(--soft); font-size: 16px; margin: 10px 4px 22px; }
+  .caption b { color: var(--fg); text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: color-mix(in srgb, var(--num-bg) 80%, transparent); text-underline-offset: 4px; }
+  .credit { color: var(--soft); opacity: .85; font-style: italic; }
+  .credit a { color: inherit; }
+
+  .zoom { text-align: center; font-weight: 800; font-size: 17px; margin: 8px 0; letter-spacing: .3px; }
+  .zoom::before { content: "\2193"; display: block; font-size: 32px; line-height: 1; animation: bob 1.8s ease-in-out infinite; }
+  .zoom:nth-of-type(4n+1) { color: var(--teal); }
+  .zoom:nth-of-type(4n+2) { color: #d99f00; }
+  .zoom:nth-of-type(4n+3) { color: var(--red); }
+  .zoom:nth-of-type(4n) { color: var(--navy); }
+  @keyframes bob { 50% { transform: translateY(5px); } }
+  @media (prefers-reduced-motion: reduce) { .zoom::before { animation: none; } }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid .photo { margin: 0; }
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+    body { font-size: 17px; }
+    .stop { padding: 22px 18px 8px; border-radius: 24px; }
+    header { padding: 32px 18px 26px; border-radius: 24px; }
+  }
+
+  .note {
+    border-left: 5px solid var(--yellow); padding: 12px 16px; border-radius: 14px; margin: 14px 0 22px;
+    background: rgba(250, 192, 5, 0.14); color: var(--ink);
+  }
+  .stop .note { background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255,255,255,0.45); border-left: 5px solid var(--yellow); color: var(--fg); }
+  .note b { color: inherit; }
+
+  table { --bg: var(--navy); width: 100%; border-collapse: separate; border-spacing: 0; margin: 12px 0 22px; border-radius: 22px; overflow: hidden; }
+  th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.18); color: #fff; }
+  tr:last-child td { border-bottom: none; }
+  th { background: linear-gradient(90deg, var(--teal), #0b8f9a); color: #fff; }
+  tr:nth-child(odd) td { background: rgba(255,255,255,0.05); }
+  td:last-child { color: var(--mint); font-weight: 600; }
+  tr:last-child td:last-child { color: var(--yellow); font-weight: 700; }
+
+  h2.section { font-size: 28px; margin: 44px 0 10px; color: var(--navy); letter-spacing: -0.3px; }
+  h2.section::after { content: ""; display: block; width: 90px; height: 5px; border-radius: 4px; margin-top: 8px;
+    background: linear-gradient(90deg, var(--teal), var(--yellow), var(--red)); }
+  .sources { font-size: 14px; color: #4d6a78; }
+  .sources a { color: var(--teal); }
+  footer { text-align: center; color: #4d6a78; font-size: 14px; margin-top: 44px; }
+  header .meta { display: inline-flex; gap: 10px; align-items: center; margin: 0 0 16px; padding: 6px 16px; border-radius: 999px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.35); font-size: 15px; font-weight: 600; color: #fff; letter-spacing: .3px; }
+  header .meta .dot { color: var(--yellow); }
+  .video-card video { display: block; width: 100%; height: auto; border-radius: 16px; background: #000; }
+  .video-card .video-cap { margin: 10px 6px 2px; color: var(--navy); font-weight: 600; font-size: 15px; text-align: center; }
+
+  .timeline { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .timeline li { border-radius: 18px; padding: 14px 14px 12px; color: #fff; position: relative; box-shadow: 0 8px 20px rgba(2,56,82,.18); }
+  .timeline li b { display: block; font-size: 15px; letter-spacing: .3px; opacity: .9; }
+  .timeline li span { display: block; font-size: 17px; font-weight: 700; line-height: 1.3; margin-top: 4px; }
+  .timeline li:nth-child(5n+1) { background: var(--navy); }
+  .timeline li:nth-child(5n+2) { background: var(--teal); }
+  .timeline li:nth-child(5n+3) { background: var(--yellow); color: var(--navy); }
+  .timeline li:nth-child(5n+4) { background: var(--red); }
+  .timeline li:nth-child(5n) { background: var(--mint); color: var(--navy); }
+  .timeline-title { margin: 6px 6px 12px; font-weight: 800; color: var(--navy); font-size: 20px; }
+  @media (max-width: 640px) { .timeline { grid-template-columns: 1fr 1fr; } }
+  header .meta { display: inline-flex; gap: 10px; align-items: center; margin: 0 0 16px; padding: 6px 16px; border-radius: 999px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.35); font-size: 15px; font-weight: 600; color: #fff; letter-spacing: .3px; }
+  header .meta .dot { color: var(--yellow); }
+  .when { display: inline-block; margin: 0 0 10px; padding: 4px 12px; border-radius: 999px; font-size: 14px; font-weight: 700; background: rgba(255,255,255,0.2); color: var(--fg); }
+</style>
+</head>
+<body><div class="wrap">
+<nav style="font-size:15px"><a href="/writing/" style="text-decoration:none">&larr; Back to Writing</a> &nbsp;·&nbsp; <a href="/" style="text-decoration:none">shoyaibraby.com</a></nav>
+<header><h1>From the Big Bang<br><span>to the First Life on Earth</span></h1><div class="meta"><span>Science</span><span class="dot">•</span><time datetime="2026-11-23">23 November 2026</time></div><p>How a tiny, hot dot grew into a whole universe, made stars, built our planet, and finally made life. Let’s travel through time!</p></header>
+<div class="card" style="padding:20px"><p class="timeline-title">The whole story on one line</p><ol class="timeline">
+<li><b>13.8 billion years ago</b><span>The Big Bang</span></li><li><b>First 3 minutes</b><span>First tiny particles</span></li><li><b>380,000 years later</b><span>First atoms and light</span></li><li><b>200 million years later</b><span>First stars shine</span></li><li><b>Billions of years</b><span>Stars cook new elements</span></li><li><b>4.6 billion years ago</b><span>Sun and Earth are born</span></li><li><b>4.4 billion years ago</b><span>First oceans</span></li><li><b>About 4 billion years ago</b><span>First life!</span></li></ol></div>
+<div class="note"><b>Did you know?</b> If the whole history of the universe were squeezed into <b>one year</b>, the Big Bang would be on 1 January, the Sun and Earth would form at the end of August, the first life would appear around 21 September, and humans would arrive at about 11:48 pm on 31 December!</div>
+<section class="stop"><h2><span class="num">1</span> The Big Bang</h2><span class="when">13.8 billion years ago</span><p>Long, long ago, everything in the universe was squeezed into a tiny, super-hot spot. Then <b>space itself started to stretch</b>, like a balloon being blown up. It was not an explosion in one place. It happened everywhere at once, and the universe is still stretching today!</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/CMB_Timeline300_no_WMAP.jpg?width=1100" alt="NASA timeline of the universe growing from the Big Bang to today"></div>
+  <p class="caption"><b>Read it left to right:</b> the universe starts tiny on the left and keeps getting bigger, with stars and galaxies appearing as it grows. <span class="credit">(Picture: NASA / WMAP Science Team)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">2</span> The first atoms</h2><span class="when">3 minutes to 380,000 years after the Big Bang</span><p>At first the universe was a boiling soup of tiny bits. As it cooled, they joined up to make the two simplest things: <b>hydrogen</b> and <b>helium</b>. After 380,000 years it was cool enough for whole atoms to form, and light could finally travel. We can still see that very old light today!</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cosmic_Microwave_Background_(54445461354).png?width=1100" alt="Map of the oldest light in the universe, the cosmic microwave background"></div>
+  <p class="caption"><b>The universe’s baby picture.</b> These speckles are the oldest light we can see. They were the seeds of every galaxy. <span class="credit">(Picture: Mark McCaughrean, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, based on ESA Planck data)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">3</span> The first stars light up</h2><span class="when">About 200 million years after the Big Bang</span><p>For millions of years the universe was dark, with only clouds of gas. Then <b>gravity</b> pulled the gas into big balls that got so hot they started to shine. These were the <b>first stars</b>, much bigger and brighter than our Sun!</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/NASA-WMAP-first-stars.jpg?width=1100" alt="Artist drawing of the first stars forming in the young universe"></div>
+  <p class="caption"><b>An artist’s picture</b> of the first stars switching on in the dark young universe. <span class="credit">(Picture: NASA / WMAP Science Team)</span></p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg?width=1100" alt="Hubble photo of the Pillars of Creation, tall clouds where stars are born"></div>
+  <p class="caption"><b>A real star nursery.</b> New stars are still being born inside these giant clouds of gas and dust today. <span class="credit">(Picture: NASA, ESA, Hubble Heritage Team)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">4</span> Stars cook the ingredients of life</h2><span class="when">Over billions of years</span><p>Stars are like giant kitchens. Inside them, hydrogen and helium are squeezed into new things like <b>carbon, oxygen and iron</b>. When a big star dies, it explodes as a <b>supernova</b> and throws these new ingredients into space. New stars and planets are made from them. That is why we say <b>we are made of stardust!</b></p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Crab_Nebula.jpg?width=1100" alt="Hubble photo of the Crab Nebula, the remains of an exploded star"></div>
+  <p class="caption"><b>The Crab Nebula</b> is what is left of a star that exploded. Its glowing gas is full of new ingredients. <span class="credit">(Picture: NASA, ESA, J. Hester and A. Loll)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">5</span> Our Sun and Earth are born</h2><span class="when">4.6 billion years ago</span><p>A cloud of gas and stardust squeezed together. The middle became our <b>Sun</b>. The leftover dust spun around it in a flat disk and slowly stuck together into planets, including <b>Earth</b>.</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/HL_Tau_protoplanetary_disk.jpg?width=1100" alt="ALMA telescope image of a young star surrounded by a dusty disk with rings"></div>
+  <p class="caption"><b>A real baby solar system!</b> This young star has a dusty disk around it. The dark rings may be where new planets are forming, just like Earth did. <span class="credit">(Picture: ALMA (ESO/NAOJ/NRAO), <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">6</span> A giant crash makes the Moon</h2><span class="when">About 4.5 billion years ago</span><p>Baby Earth was hot and full of melted rock. Scientists think a planet about the size of Mars, called <b>Theia</b>, crashed into it. The pieces thrown into space came together and became our <b>Moon</b>.</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Artist's_concept_of_collision_at_HD_172555.jpg?width=1100" alt="Artist drawing of two rocky planets crashing together"></div>
+  <p class="caption"><b>An artist’s picture</b> of two young planets crashing, a bit like the crash that made our Moon. <span class="credit">(Picture: NASA / JPL-Caltech)</span></p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/FullMoon2010.jpg?width=1100" alt="Photo of the full Moon"></div>
+  <p class="caption"><b>Our Moon today</b>, made from that ancient crash. <span class="credit">(Picture: Gregory H. Revera, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">7</span> Oceans fill the Earth</h2><span class="when">About 4.4 to 4 billion years ago</span><p>Slowly, Earth cooled down. Water came from volcanoes and from icy rocks from space, and filled the first <b>oceans</b>. Earth was getting ready for life!</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hadean.png?width=1100" alt="Artist drawing of the young Earth with volcanoes and lava"></div>
+  <p class="caption"><b>Young Earth</b> was hot, with lots of volcanoes, lava and space rocks. <span class="credit">(Picture: Tim Bertelink, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/The_Earth_seen_from_Apollo_17.jpg?width=1100" alt="The Blue Marble photo of Earth from space"></div>
+  <p class="caption"><b>Earth today</b>, photographed by astronauts. Look at all that blue ocean! <span class="credit">(Picture: NASA / Apollo 17 crew)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">8</span> The first life begins!</h2><span class="when">About 4 to 3.5 billion years ago</span><p>In the young oceans, simple chemicals, water and energy from volcanoes, lightning and sunlight mixed together. They made the <b>building blocks of life</b>. Some molecules learned to <b>copy themselves</b>, and got wrapped in tiny bubbles. These became the very first <b>living cells</b>, far too small to see!</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Blacksmoker_in_Atlantic_Ocean.jpg?width=1100" alt="Photo of a black smoker hot water vent on the deep ocean floor"></div>
+  <p class="caption"><b>A deep-sea hot vent.</b> Many scientists think life may have started near warm, chemical-rich places like this. <span class="credit">(Picture: P. Rona, NOAA)</span></p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Miller-Urey_experiment-en.svg?width=1100" alt="Diagram of the Miller–Urey experiment"></div>
+  <p class="caption"><b>A famous experiment (1952):</b> scientists sparked fake lightning through gases and water, and made some building blocks of life in a jar! <span class="credit">(Picture: YassineMrabet, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</span></p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stromatolites_in_Sharkbay.jpg?width=1100" alt="Stromatolite rocks in shallow water at Shark Bay, Australia"></div>
+  <p class="caption"><b>Stromatolites</b> are rocks built by tiny living things. Fossils like these, 3.5 billion years old, are some of the oldest signs of life on Earth. <span class="credit">(Picture: Paul Harrison, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</span></p></section>
+<div class="zoom">And then...</div>
+<section class="stop"><h2><span class="num">9</span> What happened next</h2><p>Tiny living things called <b>cyanobacteria</b> learned to use sunlight. They slowly filled the air with <b>oxygen</b>, about 2.4 billion years ago. Much later, about 540 million years ago, the sea filled with all kinds of animals. And just 300,000 years ago, <b>humans</b> appeared!</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cyanobacteria_guerrero_negro.jpg?width=1100" alt="Photo of a mat of cyanobacteria"></div>
+  <p class="caption"><b>Cyanobacteria</b>, the tiny oxygen makers. We can breathe today thanks to them! <span class="credit">(Picture: NASA)</span></p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Burgess_Shale_reconstruction.jpg?width=1100" alt="Drawing of strange early sea animals from the Cambrian period"></div>
+  <p class="caption"><b>Early sea animals</b>, about 500 million years ago. Some looked very strange! <span class="credit">(Picture: PaleoEquii, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p></section>
+<section class="stop idea"><h2><span class="num">?</span> Big mysteries still to solve</h2><p>Scientists know a lot, but some questions are still open:</p><p>&bull; What happened at the <b>very first moment</b>, and was there anything before it?<br>&bull; <b>Exactly how</b> did non-living chemicals turn into the first living cell?<br>&bull; Is there life on <b>other planets</b>?</p><div class="note"><b>Maybe you</b> will be the scientist who solves one of these one day!</div></section>
+<h2 class="section">Amazing facts</h2>
+<table><tr><th>Question</th><th>Answer</th></tr><tr><td>How old is the universe?</td><td>About 13.8 billion years</td></tr><tr><td>What were the first two elements?</td><td>Hydrogen and helium</td></tr><tr><td>How old are the Sun and Earth?</td><td>About 4.6 billion years</td></tr><tr><td>When did life begin?</td><td>About 4 billion years ago</td></tr><tr><td>What are we made of?</td><td>Stardust!</td></tr></table>
+<div class="note"><b>Try this:</b> look at your hand. The carbon in it was made inside a star billions of years ago!</div>
+<h2 class="section">Where these facts and pictures come from (for grown-ups)</h2>
+<ul class="sources"><li>Pictures are from <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>: NASA, ESA, Hubble, ALMA and NOAA images (public domain or CC BY), and photos by Mark McCaughrean, Gregory H. Revera, Tim Bertelink, YassineMrabet, Paul Harrison and PaleoEquii under the Creative Commons licences shown in each caption.</li><li><a href="https://science.nasa.gov/universe/overview/">NASA: Universe overview</a></li><li><a href="https://www.esa.int/Science_Exploration/Space_Science/Planck">ESA: Planck mission</a></li><li><a href="https://en.wikipedia.org/wiki/Abiogenesis">Origin of life (abiogenesis) — Wikipedia</a></li><li><a href="https://en.wikipedia.org/wiki/Stromatolite">Stromatolites — Wikipedia</a></li><li><a href="https://shoyaibraby.com/writing/trip-through-space.html">Our earlier guide: A Trip Through Space</a></li></ul>
+<footer>Written by Abu Musa Muhammad Shoyaib · November 2026</footer>
+</div>
+</body>
+</html>
