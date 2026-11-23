@@ -14,7 +14,7 @@
     --red: #dc2e2f;
     --ink: #0b2433;
     --on-navy: #ffffff;
-    --on-navy-soft: #cfe9e1;
+    --on-navy-soft: #e8f1ff;
   }
   * { box-sizing: border-box; }
   html { background: #ffffff; }
@@ -37,14 +37,14 @@
   /* Deep blue glass panels */
   .stop, header, table, .stop .note {
     background:
-      radial-gradient(500px 220px at 100% 0%, rgba(7, 159, 160, 0.28), transparent 70%),
-      linear-gradient(150deg, rgba(4, 74, 104, 0.97), rgba(2, 56, 82, 0.97) 55%, rgba(1, 42, 62, 0.98));
-    border: 1px solid rgba(159, 216, 197, 0.28);
+      radial-gradient(520px 240px at 100% 0%, rgba(255, 255, 255, 0.22), transparent 70%),
+      linear-gradient(150deg, rgba(96, 156, 250, 0.96), rgba(59, 130, 247, 0.96) 50%, rgba(37, 99, 220, 0.97));
+    border: 1px solid rgba(255, 255, 255, 0.35);
     -webkit-backdrop-filter: blur(14px) saturate(150%);
     backdrop-filter: blur(14px) saturate(150%);
     box-shadow:
-      0 18px 44px rgba(2, 56, 82, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.22),
+      0 18px 44px rgba(37, 99, 220, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45),
       inset 0 0 0 1px rgba(255, 255, 255, 0.03);
     color: var(--on-navy);
   }
@@ -55,7 +55,7 @@
     -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
     box-shadow: 0 6px 18px rgba(2, 56, 82, 0.08);
   }
-  nav a { color: var(--navy) !important; font-weight: 600; }
+  nav a { color: #3b82f7 !important; font-weight: 600; }
 
   header {
     text-align: center; margin: 22px 0 10px; padding: 46px 28px 38px; border-radius: 32px;
@@ -63,11 +63,11 @@
   }
   header::after {
     content: ""; position: absolute; left: -80px; bottom: -120px; width: 320px; height: 320px;
-    background: radial-gradient(circle, rgba(250, 192, 5, 0.22), transparent 65%); pointer-events: none;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.22), transparent 65%); pointer-events: none;
   }
   header h1 { font-size: clamp(30px, 6vw, 50px); line-height: 1.15; margin: 0 0 14px; letter-spacing: -0.5px; color: #fff; }
   header h1 span {
-    background: linear-gradient(90deg, var(--mint), var(--yellow));
+    background: linear-gradient(90deg, #ffffff, #dbeafe);
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
   header p { color: var(--on-navy-soft); font-size: 20px; margin: 0 auto; max-width: 640px; }
@@ -83,14 +83,14 @@
   .card img { display: block; width: 100%; height: auto; border-radius: 16px; }
   .stop .card {
     background: rgba(255, 255, 255, 0.96);
-    border: 1px solid rgba(159, 216, 197, 0.5);
-    box-shadow: 0 10px 26px rgba(0, 20, 35, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 10px 26px rgba(10, 40, 120, 0.30);
   }
 
   .stop { border-radius: 30px; padding: 28px 28px 12px; margin: 14px 0; position: relative; }
   .stop::before {
     content: ""; position: absolute; left: 30px; right: 30px; top: 0; height: 2px; border-radius: 2px;
-    background: linear-gradient(90deg, transparent, var(--mint), transparent); opacity: .7;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent); opacity: .8;
   }
   .stop h2 { margin: 0 0 10px; font-size: 28px; display: flex; align-items: center; gap: 14px; color: #fff; letter-spacing: -0.3px; }
   .stop p { color: var(--on-navy); }
@@ -99,8 +99,8 @@
   .num {
     display: inline-grid; place-items: center; flex: none; width: 46px; height: 46px; border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #bae6fd, #38bdf8 60%, #0284c7);
-    color: #fff; font-size: 22px; font-weight: 700;
-    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.22), 0 6px 16px rgba(56, 189, 248, 0.45);
+    color: #fff; font-size: 22px; font-weight: 700; border: 3px solid #fff;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25), 0 6px 16px rgba(10, 40, 120, 0.35);
   }
   .stop.idea { border: 2px dashed var(--yellow); }
   .stop.idea .num { background: radial-gradient(circle at 30% 30%, #bae6fd, #38bdf8 60%, #0284c7); color: #fff; }
@@ -108,16 +108,16 @@
   .photo { margin: 20px 0 6px; }
   .photo img {
     display: block; width: 100%; height: auto; border-radius: 20px;
-    border: 1px solid rgba(159, 216, 197, 0.35);
-    box-shadow: 0 14px 34px rgba(0, 15, 30, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 14px 34px rgba(10, 30, 90, 0.40);
   }
   .stop > .photo img { max-width: 680px; margin: 0 auto; }
   .caption { color: var(--on-navy-soft); font-size: 16px; margin: 10px 4px 22px; }
-  .caption b { color: var(--yellow); }
-  .credit { color: #8fbfb3; font-style: italic; }
-  .credit a { color: #8fbfb3; }
+  .caption b { color: #ffffff; text-decoration: underline; text-decoration-color: rgba(255,255,255,.55); text-underline-offset: 4px; }
+  .credit { color: rgba(255,255,255,0.78); font-style: italic; }
+  .credit a { color: rgba(255,255,255,0.85); }
 
-  .zoom { text-align: center; color: var(--teal); font-weight: 700; font-size: 17px; margin: 6px 0; }
+  .zoom { text-align: center; color: #3b82f7; font-weight: 700; font-size: 17px; margin: 6px 0; }
   .zoom::before { content: "\2193"; display: block; font-size: 32px; line-height: 1; animation: bob 1.8s ease-in-out infinite; }
   @keyframes bob { 50% { transform: translateY(5px); } }
   @media (prefers-reduced-motion: reduce) { .zoom::before { animation: none; } }
@@ -139,14 +139,14 @@
   .note b { color: inherit; }
 
   table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 12px 0 22px; border-radius: 22px; overflow: hidden; }
-  th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid rgba(159, 216, 197, 0.2); color: #fff; }
+  th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.25); color: #fff; }
   tr:last-child td { border-bottom: none; }
-  th { background: rgba(159, 216, 197, 0.18); color: var(--mint); }
-  tr:last-child td:last-child { color: var(--yellow); font-weight: 600; }
+  th { background: rgba(255, 255, 255, 0.18); color: #fff; }
+  tr:last-child td:last-child { color: #fff; font-weight: 700; }
 
-  h2.section { font-size: 28px; margin: 44px 0 10px; color: var(--navy); letter-spacing: -0.3px; }
+  h2.section { font-size: 28px; margin: 44px 0 10px; color: #101f42; letter-spacing: -0.3px; }
   .sources { font-size: 14px; color: #4d6a78; }
-  .sources a { color: var(--teal); }
+  .sources a { color: #3b82f7; }
   footer { text-align: center; color: #4d6a78; font-size: 14px; margin-top: 44px; }
 </style>
 </head>
