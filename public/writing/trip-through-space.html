@@ -7,19 +7,17 @@
 <meta name="description" content="A simple, picture-filled guide for children: zoom out from Earth to the Solar System, the Milky Way, the cosmic web, the observable universe and the idea of a multiverse.">
 <style>
   :root {
-    --deep: #06102e;
-    --deep2: #0a1a4a;
-    --glass: rgba(120, 170, 255, 0.08);
-    --glass-strong: rgba(140, 190, 255, 0.13);
-    --edge: rgba(170, 210, 255, 0.22);
-    --edge-soft: rgba(170, 210, 255, 0.12);
-    --text: #eaf2ff;
-    --muted: #b6c6e6;
-    --sky: #7cc8ff;
-    --accent: #ffd166;
+    --bg: #ffffff;
+    --text: #0f1b3d;
+    --muted: #4a5878;
+    --sky: #1d8fe8;
+    --deep: #0b2a6f;
+    --accent: #f5a623;
+    --glass: rgba(255, 255, 255, 0.62);
+    --edge: rgba(29, 143, 232, 0.18);
   }
   * { box-sizing: border-box; }
-  html { background: var(--deep); }
+  html { background: var(--bg); }
   body {
     margin: 0;
     font-family: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -27,123 +25,63 @@
     line-height: 1.65;
     font-size: 18px;
     background:
-      radial-gradient(900px 600px at 12% 8%, rgba(56, 120, 255, 0.35), transparent 60%),
-      radial-gradient(800px 600px at 92% 30%, rgba(0, 190, 255, 0.22), transparent 60%),
-      radial-gradient(900px 700px at 20% 75%, rgba(110, 70, 255, 0.22), transparent 60%),
-      radial-gradient(700px 500px at 85% 92%, rgba(0, 140, 255, 0.25), transparent 60%),
-      linear-gradient(180deg, var(--deep2) 0%, var(--deep) 45%, #040a20 100%);
+      radial-gradient(700px 500px at 8% 6%, rgba(124, 200, 255, 0.28), transparent 60%),
+      radial-gradient(700px 500px at 95% 35%, rgba(150, 130, 255, 0.16), transparent 60%),
+      radial-gradient(800px 600px at 10% 80%, rgba(80, 180, 255, 0.16), transparent 60%),
+      #ffffff;
     background-attachment: fixed;
     min-height: 100vh;
   }
-  body::before {
-    content: "";
-    position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    background-image:
-      radial-gradient(1.6px 1.6px at 8% 18%, #fff 50%, transparent 51%),
-      radial-gradient(1px 1px at 27% 64%, #fff 50%, transparent 51%),
-      radial-gradient(1.4px 1.4px at 52% 12%, #fff 50%, transparent 51%),
-      radial-gradient(1px 1px at 71% 41%, #fff 50%, transparent 51%),
-      radial-gradient(1.6px 1.6px at 88% 77%, #fff 50%, transparent 51%),
-      radial-gradient(1px 1px at 17% 88%, #fff 50%, transparent 51%),
-      radial-gradient(1px 1px at 63% 83%, #fff 50%, transparent 51%),
-      radial-gradient(1.2px 1.2px at 41% 37%, #fff 50%, transparent 51%),
-      radial-gradient(1px 1px at 95% 8%, #fff 50%, transparent 51%),
-      radial-gradient(1.3px 1.3px at 4% 52%, #fff 50%, transparent 51%);
-    background-size: 600px 600px;
-    opacity: .55;
-    animation: twinkle 6s ease-in-out infinite alternate;
-  }
-  @keyframes twinkle { from { opacity: .35; } to { opacity: .7; } }
-  @media (prefers-reduced-motion: reduce) { body::before { animation: none; } }
-
   .wrap { max-width: 900px; margin: 0 auto; padding: 28px 20px 72px; }
 
-  /* Glass building block */
-  .stop, header, .card, table, .note, nav, .sources-panel {
-    background: linear-gradient(145deg, var(--glass-strong), var(--glass));
+  .stop, header, .card, table, .note, nav {
+    background: var(--glass);
     border: 1px solid var(--edge);
-    -webkit-backdrop-filter: blur(18px) saturate(140%);
-    backdrop-filter: blur(18px) saturate(140%);
-    box-shadow:
-      0 20px 50px rgba(0, 8, 40, 0.55),
-      inset 0 1px 0 rgba(255, 255, 255, 0.18),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 14px 40px rgba(20, 60, 140, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
 
-  nav {
-    display: inline-flex; gap: 6px; align-items: center;
-    padding: 8px 16px; border-radius: 999px; font-size: 15px;
-  }
+  nav { display: inline-flex; gap: 6px; align-items: center; padding: 8px 16px; border-radius: 999px; font-size: 15px; }
   nav a { color: var(--sky) !important; }
 
   header {
-    text-align: center;
-    margin: 22px 0 10px;
-    padding: 44px 28px 36px;
-    border-radius: 32px;
+    text-align: center; margin: 22px 0 10px; padding: 44px 28px 36px; border-radius: 32px;
     position: relative; overflow: hidden;
+    background: linear-gradient(135deg, rgba(220, 238, 255, 0.85), rgba(255, 255, 255, 0.7));
   }
-  header::after {
-    content: ""; position: absolute; inset: -40% -10% auto auto; width: 320px; height: 320px;
-    background: radial-gradient(circle, rgba(124, 200, 255, 0.35), transparent 65%);
-    pointer-events: none;
-  }
-  header h1 { font-size: clamp(30px, 6vw, 50px); line-height: 1.15; margin: 0 0 14px; letter-spacing: -0.5px; }
+  header h1 { font-size: clamp(30px, 6vw, 50px); line-height: 1.15; margin: 0 0 14px; letter-spacing: -0.5px; color: var(--deep); }
   header h1 span {
-    background: linear-gradient(90deg, var(--sky), var(--accent));
+    background: linear-gradient(90deg, var(--sky), #7b5cff);
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
   header p { color: var(--muted); font-size: 20px; margin: 0 auto; max-width: 640px; }
 
-  .card {
-    border-radius: 26px; padding: 12px; margin: 22px 0;
-  }
-  .card img {
-    display: block; width: 100%; height: auto;
-    border-radius: 18px;
-    box-shadow: 0 6px 18px rgba(0, 10, 50, 0.35);
-  }
+  .card { border-radius: 24px; padding: 12px; margin: 22px 0; }
+  .card img { display: block; width: 100%; height: auto; border-radius: 16px; }
 
-  .stop {
-    border-radius: 30px;
-    padding: 28px 28px 12px;
-    margin: 14px 0;
-    position: relative;
-  }
-  .stop::before {
-    content: ""; position: absolute; left: 28px; right: 28px; top: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent);
-  }
-  .stop h2 { margin: 0 0 10px; font-size: 28px; display: flex; align-items: center; gap: 14px; letter-spacing: -0.3px; }
-  .stop p { color: var(--text); }
-  .stop .card { background: rgba(255,255,255,0.06); box-shadow: inset 0 1px 0 rgba(255,255,255,.15); }
+  .stop { border-radius: 30px; padding: 28px 28px 12px; margin: 14px 0; }
+  .stop h2 { margin: 0 0 10px; font-size: 28px; display: flex; align-items: center; gap: 14px; color: var(--deep); letter-spacing: -0.3px; }
+  .stop .card { background: rgba(255, 255, 255, 0.9); box-shadow: 0 4px 14px rgba(20, 60, 140, 0.06); }
 
   .num {
-    display: inline-grid; place-items: center; flex: none;
-    width: 46px; height: 46px; border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #b9e3ff, var(--sky) 45%, #2f7bff);
-    color: #04122f; font-size: 22px; font-weight: 700;
-    box-shadow: 0 0 0 4px rgba(124, 200, 255, 0.15), 0 6px 18px rgba(47, 123, 255, 0.5);
+    display: inline-grid; place-items: center; flex: none; width: 46px; height: 46px; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #8fd3ff, var(--sky) 55%, #1557c9);
+    color: #fff; font-size: 22px; font-weight: 700;
+    box-shadow: 0 0 0 4px rgba(29, 143, 232, 0.12), 0 6px 16px rgba(29, 143, 232, 0.35);
   }
-
-  .stop.idea { border-style: dashed; border-color: rgba(255, 209, 102, 0.55); }
-  .stop.idea .num { background: radial-gradient(circle at 30% 30%, #fff1c4, var(--accent) 50%, #f0a500); }
+  .stop.idea { border-style: dashed; border-color: rgba(245, 166, 35, 0.7); }
+  .stop.idea .num { background: radial-gradient(circle at 30% 30%, #ffe3a6, var(--accent) 55%, #d98200); }
 
   .photo { margin: 20px 0 6px; }
-  .photo img {
-    display: block; width: 100%; height: auto; border-radius: 20px;
-    border: 1px solid var(--edge-soft);
-    box-shadow: 0 14px 36px rgba(0, 6, 30, 0.6);
-  }
+  .photo img { display: block; width: 100%; height: auto; border-radius: 20px; box-shadow: 0 12px 30px rgba(10, 30, 80, 0.22); }
+  .stop > .photo img { max-width: 680px; margin: 0 auto; }
   .caption { color: var(--muted); font-size: 16px; margin: 10px 4px 22px; }
-  .caption b { color: #fff; }
-  .credit { color: #8fa3cc; font-style: italic; }
-  .credit a { color: #8fa3cc; }
+  .caption b { color: var(--text); }
+  .credit { color: #7a86a3; font-style: italic; }
+  .credit a { color: #7a86a3; }
 
-  .zoom {
-    text-align: center; color: var(--sky); font-weight: 600; font-size: 17px; margin: 6px 0;
-    text-shadow: 0 0 14px rgba(124, 200, 255, 0.6);
-  }
+  .zoom { text-align: center; color: var(--sky); font-weight: 600; font-size: 17px; margin: 6px 0; }
   .zoom::before { content: "\2193"; display: block; font-size: 32px; line-height: 1; animation: bob 1.8s ease-in-out infinite; }
   @keyframes bob { 50% { transform: translateY(5px); } }
   @media (prefers-reduced-motion: reduce) { .zoom::before { animation: none; } }
@@ -157,23 +95,17 @@
     header { padding: 32px 18px 26px; border-radius: 24px; }
   }
 
-  .note {
-    border-left: 4px solid var(--accent);
-    padding: 12px 16px; border-radius: 14px; margin: 14px 0 22px;
-  }
+  .note { border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: 14px; margin: 14px 0 22px; }
 
-  table {
-    width: 100%; border-collapse: separate; border-spacing: 0;
-    margin: 12px 0 22px; border-radius: 22px; overflow: hidden;
-  }
-  th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--edge-soft); }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 12px 0 22px; border-radius: 22px; overflow: hidden; }
+  th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--edge); }
   tr:last-child td { border-bottom: none; }
-  th { background: rgba(124, 200, 255, 0.14); color: var(--sky); }
+  th { background: rgba(29, 143, 232, 0.10); color: var(--deep); }
 
-  h2.section { font-size: 28px; margin: 44px 0 10px; letter-spacing: -0.3px; }
-  .sources { font-size: 14px; color: #8fa3cc; }
+  h2.section { font-size: 28px; margin: 44px 0 10px; color: var(--deep); letter-spacing: -0.3px; }
+  .sources { font-size: 14px; color: #7a86a3; }
   .sources a { color: var(--sky); }
-  footer { text-align: center; color: #8fa3cc; font-size: 14px; margin-top: 44px; }
+  footer { text-align: center; color: #7a86a3; font-size: 14px; margin-top: 44px; }
 </style>
 </head>
 <body>
