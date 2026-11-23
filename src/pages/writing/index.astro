@@ -6,7 +6,8 @@ import {client, getSettings, ARTICLE_ROW, withRemainder} from '../../lib/sanity.
 
 const page = (await client.fetch(`*[_id == "writingPage"][0]{..., "articles": articles[]->${ARTICLE_ROW}}`)) || {}
 const all = await client.fetch(`*[_type == "article" && defined(slug.current)] | order(date desc)${ARTICLE_ROW}`)
-const articles = withRemainder(page.articles, all).filter((a: any) => a.slug)
+const spaceGuide = {title: 'A Trip Through Space: From Earth to the Multiverse', slug: 'trip-through-space', category: 'Science'}
+const articles = [spaceGuide, ...withRemainder(page.articles, all).filter((a: any) => a.slug && a.slug !== spaceGuide.slug)]
 const settings = (await getSettings()) || {}
 const seo = page.seo || {}
 ---
