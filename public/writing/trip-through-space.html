@@ -67,7 +67,7 @@
   }
   header h1 { font-size: clamp(30px, 6vw, 50px); line-height: 1.15; margin: 0 0 14px; letter-spacing: -0.5px; color: #fff; }
   header h1 span {
-    background: linear-gradient(90deg, #7dd3fc, #38bdf8);
+    background: linear-gradient(90deg, var(--mint), var(--yellow));
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
   header p { color: var(--on-navy-soft); font-size: 20px; margin: 0 auto; max-width: 640px; }
@@ -98,12 +98,12 @@
 
   .num {
     display: inline-grid; place-items: center; flex: none; width: 46px; height: 46px; border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #6fe3d8, var(--teal) 60%, #057a7b);
+    background: radial-gradient(circle at 30% 30%, #bae6fd, #38bdf8 60%, #0284c7);
     color: #fff; font-size: 22px; font-weight: 700;
-    box-shadow: 0 0 0 4px rgba(159, 216, 197, 0.22), 0 6px 16px rgba(7, 159, 160, 0.45);
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.22), 0 6px 16px rgba(56, 189, 248, 0.45);
   }
   .stop.idea { border: 2px dashed var(--yellow); }
-  .stop.idea .num { background: radial-gradient(circle at 30% 30%, #ffe48a, var(--yellow) 60%, #d9a300); color: var(--navy); }
+  .stop.idea .num { background: radial-gradient(circle at 30% 30%, #bae6fd, #38bdf8 60%, #0284c7); color: #fff; }
 
   .photo { margin: 20px 0 6px; }
   .photo img {
@@ -113,7 +113,7 @@
   }
   .stop > .photo img { max-width: 680px; margin: 0 auto; }
   .caption { color: var(--on-navy-soft); font-size: 16px; margin: 10px 4px 22px; }
-  .caption b { color: #38bdf8; }
+  .caption b { color: var(--yellow); }
   .credit { color: #8fbfb3; font-style: italic; }
   .credit a { color: #8fbfb3; }
 
@@ -142,7 +142,7 @@
   th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid rgba(159, 216, 197, 0.2); color: #fff; }
   tr:last-child td { border-bottom: none; }
   th { background: rgba(159, 216, 197, 0.18); color: var(--mint); }
-  tr:last-child td:last-child { color: #38bdf8; font-weight: 600; }
+  tr:last-child td:last-child { color: var(--yellow); font-weight: 600; }
 
   h2.section { font-size: 28px; margin: 44px 0 10px; color: var(--navy); letter-spacing: -0.3px; }
   .sources { font-size: 14px; color: #4d6a78; }
