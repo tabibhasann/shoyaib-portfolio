@@ -8,7 +8,8 @@ const page = (await client.fetch(`*[_id == "writingPage"][0]{..., "articles": ar
 const all = await client.fetch(`*[_type == "article" && defined(slug.current)] | order(date desc)${ARTICLE_ROW}`)
 const spaceGuide = {title: 'A Trip Through Space: From Earth to the Multiverse', slug: 'trip-through-space', category: 'Science'}
 const bigBangGuide = {title: 'From the Big Bang to the First Life on Earth', slug: 'big-bang-to-first-life', category: 'Science'}
-const articles = [bigBangGuide, spaceGuide, ...withRemainder(page.articles, all).filter((a: any) => a.slug && a.slug !== spaceGuide.slug && a.slug !== bigBangGuide.slug)]
+const lifeGuide = {title: 'From the First Life to You and Me', slug: 'first-life-to-us', category: 'Science'}
+const articles = [lifeGuide, bigBangGuide, spaceGuide, ...withRemainder(page.articles, all).filter((a: any) => a.slug && a.slug !== spaceGuide.slug && a.slug !== bigBangGuide.slug && a.slug !== lifeGuide.slug)]
 const settings = (await getSettings()) || {}
 const seo = page.seo || {}
 ---
