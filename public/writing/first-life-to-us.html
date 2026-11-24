@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From the First Life to You and Me</title>
+<meta name="description" content="A simple, picture-filled guide for children: how life on Earth changed from tiny cells 3.5 billion years ago to fish, dinosaurs, mammals and people.">
+<style>
+  :root {
+    --navy: #023852;
+    --teal: #079fa0;
+    --mint: #9fd8c5;
+    --yellow: #fac005;
+    --red: #dc2e2f;
+    --ink: #0b2433;
+  }
+  * { box-sizing: border-box; }
+  html { background: #ffffff; }
+  body {
+    margin: 0;
+    font-family: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 18px;
+    background:
+      radial-gradient(600px 420px at 4% 6%, rgba(159, 216, 197, 0.45), transparent 60%),
+      radial-gradient(600px 420px at 98% 22%, rgba(250, 192, 5, 0.18), transparent 60%),
+      radial-gradient(600px 420px at 2% 55%, rgba(7, 159, 160, 0.16), transparent 60%),
+      radial-gradient(600px 420px at 98% 80%, rgba(220, 46, 47, 0.12), transparent 60%),
+      #ffffff;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 28px 20px 72px; }
+
+  /* Each panel picks its colours from these variables */
+  .stop, header, table {
+    --bg: var(--navy); --fg: #ffffff; --soft: rgba(255,255,255,0.82); --num-bg: var(--yellow); --num-fg: var(--navy);
+    background:
+      radial-gradient(520px 240px at 100% 0%, rgba(255, 255, 255, 0.22), transparent 70%),
+      linear-gradient(150deg, color-mix(in srgb, var(--bg) 82%, white), var(--bg) 55%, color-mix(in srgb, var(--bg) 85%, black));
+    color: var(--fg);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    backdrop-filter: blur(14px) saturate(150%);
+    box-shadow:
+      0 18px 40px color-mix(in srgb, var(--bg) 35%, transparent),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  /* Colour order along the trip */
+  section.stop:nth-of-type(1) { --bg: var(--navy); }
+  section.stop:nth-of-type(2) { --bg: var(--teal); --num-bg: #ffffff; --num-fg: var(--teal); }
+  section.stop:nth-of-type(3) { --bg: var(--yellow); --fg: var(--navy); --soft: rgba(2,56,82,0.85); --num-bg: var(--navy); --num-fg: #ffffff; }
+  section.stop:nth-of-type(4) { --bg: var(--red); --num-bg: var(--yellow); --num-fg: var(--navy); }
+  section.stop:nth-of-type(5) { --bg: var(--mint); --fg: var(--navy); --soft: rgba(2,56,82,0.85); --num-bg: var(--navy); --num-fg: #ffffff; }
+  section.stop:nth-of-type(6) { --bg: var(--navy); --num-bg: var(--mint); --num-fg: var(--navy); }
+  section.stop:nth-of-type(7) { --bg: var(--teal); --num-bg: var(--yellow); --num-fg: var(--navy); }
+  section.stop:nth-of-type(8) { --bg: var(--red); --num-bg: #ffffff; --num-fg: var(--red); }
+  section.stop:nth-of-type(9) { --bg: var(--yellow); --fg: var(--navy); --soft: rgba(2,56,82,0.85); --num-bg: var(--red); --num-fg: #ffffff; }
+  section.stop.idea {
+    --bg: var(--navy); --num-bg: var(--yellow); --num-fg: var(--navy);
+    background:
+      radial-gradient(500px 260px at 0% 0%, rgba(7, 159, 160, 0.55), transparent 70%),
+      radial-gradient(500px 260px at 100% 100%, rgba(220, 46, 47, 0.45), transparent 70%),
+      radial-gradient(400px 220px at 100% 0%, rgba(250, 192, 5, 0.35), transparent 70%),
+      var(--navy);
+    border: 2px dashed rgba(255, 255, 255, 0.7);
+  }
+
+  nav {
+    display: inline-flex; gap: 6px; align-items: center; padding: 8px 16px; border-radius: 999px; font-size: 15px;
+    background: rgba(255, 255, 255, 0.75); border: 1px solid rgba(2, 56, 82, 0.15);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    box-shadow: 0 6px 18px rgba(2, 56, 82, 0.08);
+  }
+  nav a { color: var(--teal) !important; font-weight: 600; }
+
+  header {
+    text-align: center; margin: 22px 0 10px; padding: 46px 28px 40px; border-radius: 32px;
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(420px 260px at 0% 100%, rgba(7, 159, 160, 0.75), transparent 70%),
+      radial-gradient(380px 240px at 100% 0%, rgba(220, 46, 47, 0.55), transparent 70%),
+      radial-gradient(360px 220px at 100% 100%, rgba(250, 192, 5, 0.45), transparent 70%),
+      var(--navy);
+  }
+  header::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6px;
+    background: linear-gradient(90deg, var(--navy), var(--teal), var(--mint), var(--yellow), var(--red));
+  }
+  header h1 { font-size: clamp(30px, 6vw, 50px); line-height: 1.15; margin: 0 0 14px; letter-spacing: -0.5px; color: #fff; }
+  header h1 span {
+    background: linear-gradient(90deg, var(--mint), var(--yellow), #ff8a8a);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  header p { color: rgba(255,255,255,0.88); font-size: 20px; margin: 0 auto; max-width: 640px; }
+
+  /* White glass frames for the drawings */
+  .card {
+    border-radius: 24px; padding: 12px; margin: 22px 0;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(2, 56, 82, 0.12);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    box-shadow: 0 12px 30px rgba(2, 56, 82, 0.12), inset 0 1px 0 #fff;
+    position: relative;
+  }
+  .card::before {
+    content: ""; position: absolute; left: 24px; right: 24px; top: -1px; height: 4px; border-radius: 0 0 4px 4px;
+    background: linear-gradient(90deg, var(--teal), var(--mint), var(--yellow), var(--red));
+  }
+  .stop .card::before { display: none; }
+  .card img { display: block; width: 100%; height: auto; border-radius: 16px; }
+  .stop .card {
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 26px rgba(0, 20, 40, 0.25);
+  }
+
+  .stop { border-radius: 30px; padding: 28px 28px 12px; margin: 14px 0; position: relative; }
+  .stop::before {
+    content: ""; position: absolute; left: 30px; right: 30px; top: 0; height: 2px; border-radius: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.95), transparent);
+  }
+  .stop h2 { margin: 0 0 10px; font-size: 28px; display: flex; align-items: center; gap: 14px; color: var(--fg); letter-spacing: -0.3px; }
+  .stop p { color: var(--fg); }
+  .stop b { color: var(--fg); }
+
+  .num {
+    display: inline-grid; place-items: center; flex: none; width: 48px; height: 48px; border-radius: 50%;
+    background: var(--num-bg); color: var(--num-fg);
+    font-size: 22px; font-weight: 800; border: 3px solid rgba(255,255,255,0.9);
+    box-shadow: 0 6px 16px rgba(0, 20, 40, 0.3);
+  }
+
+  .photo { margin: 20px 0 6px; }
+  .photo img {
+    display: block; width: 100%; height: auto; border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 14px 34px rgba(0, 15, 35, 0.4);
+  }
+  .stop > .photo img { max-width: 680px; margin: 0 auto; }
+  .caption { color: var(--soft); font-size: 16px; margin: 10px 4px 22px; }
+  .caption b { color: var(--fg); text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: color-mix(in srgb, var(--num-bg) 80%, transparent); text-underline-offset: 4px; }
+  .credit { color: var(--soft); opacity: .85; font-style: italic; }
+  .credit a { color: inherit; }
+
+  .zoom { text-align: center; font-weight: 800; font-size: 17px; margin: 8px 0; letter-spacing: .3px; }
+  .zoom::before { content: "\2193"; display: block; font-size: 32px; line-height: 1; animation: bob 1.8s ease-in-out infinite; }
+  .zoom:nth-of-type(4n+1) { color: var(--teal); }
+  .zoom:nth-of-type(4n+2) { color: #d99f00; }
+  .zoom:nth-of-type(4n+3) { color: var(--red); }
+  .zoom:nth-of-type(4n) { color: var(--navy); }
+  @keyframes bob { 50% { transform: translateY(5px); } }
+  @media (prefers-reduced-motion: reduce) { .zoom::before { animation: none; } }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid .photo { margin: 0; }
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+    body { font-size: 17px; }
+    .stop { padding: 22px 18px 8px; border-radius: 24px; }
+    header { padding: 32px 18px 26px; border-radius: 24px; }
+  }
+
+  .note {
+    border-left: 5px solid var(--yellow); padding: 12px 16px; border-radius: 14px; margin: 14px 0 22px;
+    background: rgba(250, 192, 5, 0.14); color: var(--ink);
+  }
+  .stop .note { background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255,255,255,0.45); border-left: 5px solid var(--yellow); color: var(--fg); }
+  .note b { color: inherit; }
+
+  table { --bg: var(--navy); width: 100%; border-collapse: separate; border-spacing: 0; margin: 12px 0 22px; border-radius: 22px; overflow: hidden; }
+  th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.18); color: #fff; }
+  tr:last-child td { border-bottom: none; }
+  th { background: linear-gradient(90deg, var(--teal), #0b8f9a); color: #fff; }
+  tr:nth-child(odd) td { background: rgba(255,255,255,0.05); }
+  td:last-child { color: var(--mint); font-weight: 600; }
+  tr:last-child td:last-child { color: var(--yellow); font-weight: 700; }
+
+  h2.section { font-size: 28px; margin: 44px 0 10px; color: var(--navy); letter-spacing: -0.3px; }
+  h2.section::after { content: ""; display: block; width: 90px; height: 5px; border-radius: 4px; margin-top: 8px;
+    background: linear-gradient(90deg, var(--teal), var(--yellow), var(--red)); }
+  .sources { font-size: 14px; color: #4d6a78; }
+  .sources a { color: var(--teal); }
+  footer { text-align: center; color: #4d6a78; font-size: 14px; margin-top: 44px; }
+  header .meta { display: inline-flex; gap: 10px; align-items: center; margin: 0 0 16px; padding: 6px 16px; border-radius: 999px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.35); font-size: 15px; font-weight: 600; color: #fff; letter-spacing: .3px; }
+  header .meta .dot { color: var(--yellow); }
+  .video-card video { display: block; width: 100%; height: auto; border-radius: 16px; background: #000; }
+  .video-card .video-cap { margin: 10px 6px 2px; color: var(--navy); font-weight: 600; font-size: 15px; text-align: center; }
+
+  .timeline { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .timeline li { border-radius: 18px; padding: 14px 14px 12px; color: #fff; position: relative; box-shadow: 0 8px 20px rgba(2,56,82,.18); }
+  .timeline li b { display: block; font-size: 15px; letter-spacing: .3px; opacity: .9; }
+  .timeline li span { display: block; font-size: 17px; font-weight: 700; line-height: 1.3; margin-top: 4px; }
+  .timeline li:nth-child(5n+1) { background: var(--navy); }
+  .timeline li:nth-child(5n+2) { background: var(--teal); }
+  .timeline li:nth-child(5n+3) { background: var(--yellow); color: var(--navy); }
+  .timeline li:nth-child(5n+4) { background: var(--red); }
+  .timeline li:nth-child(5n) { background: var(--mint); color: var(--navy); }
+  .timeline-title { margin: 6px 6px 12px; font-weight: 800; color: var(--navy); font-size: 20px; }
+  @media (max-width: 640px) { .timeline { grid-template-columns: 1fr 1fr; } }
+  header .meta { display: inline-flex; gap: 10px; align-items: center; margin: 0 0 16px; padding: 6px 16px; border-radius: 999px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.35); font-size: 15px; font-weight: 600; color: #fff; letter-spacing: .3px; }
+  header .meta .dot { color: var(--yellow); }
+  .when { display: inline-block; margin: 0 0 10px; padding: 4px 12px; border-radius: 999px; font-size: 14px; font-weight: 700; background: rgba(255,255,255,0.2); color: var(--fg); }
+</style>
+</head>
+<body><div class="wrap">
+<nav style="font-size:15px"><a href="/writing/" style="text-decoration:none">&larr; Back to Writing</a> &nbsp;·&nbsp; <a href="/" style="text-decoration:none">shoyaibraby.com</a></nav>
+<header><h1>From the First Life<br><span>to You and Me</span></h1><div class="meta"><span>Science</span><span class="dot">•</span><time datetime="2026-11-24">24 November 2026</time></div><p>How tiny cells, too small to see, slowly changed into fish, dinosaurs, birds, mammals and people. Let’s travel through time again!</p></header>
+<div class="card" style="padding:20px"><p class="timeline-title">The whole story on one line</p><ol class="timeline">
+<li><b>3.5 billion years ago</b><span>Tiny life in the sea</span></li><li><b>2.4 billion years ago</b><span>Oxygen fills the air</span></li><li><b>2 billion years ago</b><span>Bigger cells team up</span></li><li><b>600 million years ago</b><span>First soft animals</span></li><li><b>540 million years ago</b><span>Animal explosion!</span></li><li><b>470 million years ago</b><span>Life moves onto land</span></li><li><b>230 million years ago</b><span>Dinosaurs arrive</span></li><li><b>300,000 years ago</b><span>Humans arrive!</span></li></ol></div>
+<div class="note"><b>Did you know?</b> If the whole history of Earth were squeezed into <b>one day</b>, the first life would appear at about 3 in the morning, oxygen would fill the air just before lunch, the first animals would arrive at about 9 at night, the dinosaurs would vanish at 11:39 pm, and humans would arrive only <b>6 seconds before midnight</b>!</div>
+<section class="stop"><h2><span class="num">1</span> Tiny life rules the sea</h2><span class="when">From about 3.5 billion years ago</span><p>For a very, very long time, the only living things on Earth were <b>tiny cells</b>, far too small to see. They lived in the water and stuck together in slimy mats. Layer by layer, these mats built special rocks called <b>stromatolites</b>. For about 3 billion years, tiny life was the only life!</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stromatolites_Cochabamba.jpg?width=1100" alt="A cut stromatolite rock showing many thin wavy layers"></div>
+  <p class="caption"><b>Inside a stromatolite.</b> Each thin stripe was built by tiny living things, one layer at a time. <span class="credit">(Picture: Didier Descouens, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">2</span> Oxygen fills the air</h2><span class="when">About 2.4 billion years ago</span><p>Some tiny cells called <b>cyanobacteria</b> learned a clever trick. They used <b>sunlight</b> to make their food, and they gave out a gas called <b>oxygen</b>. Bit by bit, oxygen filled the sea and then the air. Today we need oxygen to breathe, so we can thank these tiny cells!</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Banded_iron_formation_Dales_Gorge.jpg?width=1100" alt="Rock cliff with red and grey stripes called banded iron formation"></div>
+  <p class="caption"><b>Rusty stripes in rock.</b> The new oxygen made iron in the sea rust, and the rust sank to make these red stripes. <span class="credit">(Picture: Graeme Churchard, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">3</span> Cells team up</h2><span class="when">About 2 billion years ago</span><p>One day, a big cell swallowed a smaller cell. But instead of eating it, the two <b>lived together</b>! The small cell became a tiny <b>power station</b> inside the big one. This made a new, bigger kind of cell. Plants, animals and <b>you</b> are all made of this kind of cell.</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Animal_cell_structure_en.svg?width=1100" alt="Labelled drawing of an animal cell"></div>
+  <p class="caption"><b>A cell like the ones in your body.</b> The little bean-shaped parts, called mitochondria, were once tiny living things of their own! <span class="credit">(Picture: LadyofHats, public domain)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">4</span> The first soft animals</h2><span class="when">About 600 to 540 million years ago</span><p>Earth may have frozen over almost completely, like a giant <b>snowball</b>. When the ice melted, something new appeared: the first <b>animals</b> made of many cells. They were soft and flat, a bit like jelly mats lying on the sea floor. They had no eyes, no legs and no shells.</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Dickinsonia_costata.jpg?width=1100" alt="Fossil of Dickinsonia, a round flat early animal with ribbed lines"></div>
+  <p class="caption"><b>Dickinsonia</b> was one of the very first animals. It looked like a flat, stripy pancake! <span class="credit">(Picture: Ghedoghedo, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">5</span> The animal explosion</h2><span class="when">About 540 million years ago</span><p>Then, in a short time, the sea filled with <b>all kinds of new animals</b>. Now they had <b>eyes, legs, shells and teeth</b>. Some were hunters and some were hiding. Scientists call this the <b>Cambrian explosion</b>. The first fish also swam in the sea at this time.</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Anomalocaris_BW.jpg?width=1100" alt="Drawing of Anomalocaris, an early sea hunter with big grabbing arms"></div>
+  <p class="caption"><b>Anomalocaris</b> was the top hunter of its time. It grabbed food with two spiky arms in front of its mouth. <span class="credit">(Picture: Nobu Tamura, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>)</span></p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Elrathia_kingii_growth_series.jpg?width=1100" alt="Fossils of trilobites of different sizes"></div>
+  <p class="caption"><b>Trilobites</b> had hard shells and good eyes. These fossils show them from small babies to grown-ups. <span class="credit">(Picture: John Alan Elson, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">6</span> Life moves onto land</h2><span class="when">About 470 to 375 million years ago</span><p>For a long time, the land was bare rock. First, tiny <b>plants</b> crept out of the water. Then came bugs. Later, some fish with strong fins started to <b>crawl</b> in shallow water. Their great-great-great-grandchildren became frogs, lizards, and in the end, <b>us</b>!</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cooksonia_pertoni.png?width=1100" alt="Drawing of Cooksonia, a tiny early land plant with thin stems"></div>
+  <p class="caption"><b>Cooksonia</b> was one of the first plants on land. It was only as tall as your finger! <span class="credit">(Picture: Smith609, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>)</span></p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tiktaalik_BW.jpg?width=1100" alt="Drawing of Tiktaalik, a fish with leg-like fins"></div>
+  <p class="caption"><b>Tiktaalik</b> was a fish with fins like little legs. It could prop itself up in shallow water. <span class="credit">(Picture: Nobu Tamura, <a href="https://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">7</span> The age of dinosaurs</h2><span class="when">About 230 to 66 million years ago</span><p><b>Dinosaurs</b> ruled the Earth for more than 160 million years! Some were as big as a house and some were as small as a chicken. Many had <b>feathers</b>, and some of them became <b>birds</b>. Then, 66 million years ago, a giant <b>space rock</b> crashed into Earth, and most dinosaurs disappeared.</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tyrannosaurus_rex_mmartyniuk.png?width=1100" alt="Drawing of Tyrannosaurus rex"></div>
+  <p class="caption"><b>Tyrannosaurus rex</b>, one of the biggest meat-eating dinosaurs ever. <span class="credit">(Picture: Matt Martyniuk, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</span></p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Archaeopteryx_lithographica_(Berlin_specimen).jpg?width=1100" alt="Fossil of Archaeopteryx with feathers and wings"></div>
+  <p class="caption"><b>Archaeopteryx</b>, half dinosaur and half bird. You can see its feathers in the stone! <span class="credit">(Picture: H. Raab, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</span></p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Chicxulub_impact_-_artist_impression.jpg?width=1100" alt="Artist drawing of a giant asteroid hitting Earth"></div>
+  <p class="caption"><b>The space rock that ended the dinosaurs</b> was about 10 km wide. It hit the sea near Mexico. <span class="credit">(Picture: Donald E. Davis / NASA, public domain)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">8</span> Mammals take over</h2><span class="when">After 66 million years ago</span><p>Small furry animals called <b>mammals</b> had lived next to the dinosaurs, hiding and staying small. When the dinosaurs were gone, mammals grew <b>bigger and bigger</b>. They became whales, elephants, horses, cats, monkeys and apes.</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Purgatorius_BW.jpg?width=1100" alt="Drawing of Purgatorius, a small furry early mammal"></div>
+  <p class="caption"><b>Purgatorius</b> was about as big as a mouse. It was one of the earliest relatives of monkeys, apes and people. <span class="credit">(Picture: Nobu Tamura, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>)</span></p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Woolly_mammoth.jpg?width=1100" alt="Museum model of a woolly mammoth"></div>
+  <p class="caption"><b>The woolly mammoth</b> lived in the cold Ice Age, and early people saw it alive! This is a model in a museum. <span class="credit">(Picture: Flying Puffin, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>)</span></p></section>
+<div class="zoom">And then...</div>
+<section class="stop"><h2><span class="num">9</span> Humans arrive!</h2><span class="when">About 300,000 years ago</span><p>Millions of years ago, some apes in <b>Africa</b> started to walk on two legs. Their family slowly changed, and about 300,000 years ago, people like <b>us</b> appeared. We learned to make <b>tools</b>, use <b>fire</b>, talk, paint and tell stories. Then we spread all over the world!</p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lucy_blackbg.jpg?width=1100" alt="Fossil skeleton called Lucy"></div>
+  <p class="caption"><b>Lucy</b> lived about 3.2 million years ago. She was a relative of humans who walked on two legs. <span class="credit">(Picture: 120, <a href="https://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a>)</span></p><div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lascaux_painting.jpg?width=1100" alt="Old cave painting of horses and animals in Lascaux cave"></div>
+  <p class="caption"><b>Cave paintings</b> made by people about 17,000 years ago. Early humans loved to draw animals! <span class="credit">(Picture: Lascaux cave, public domain)</span></p><div class="note"><b>You are part of this story!</b> Every living thing today, from a tiny ant to a giant whale, comes from those first tiny cells.</div></section>
+<section class="stop idea"><h2><span class="num">?</span> Big mysteries still to solve</h2><p>Scientists know a lot, but some questions are still open:</p><p>&bull; Why did tiny life stay tiny for <b>such a long time</b>?<br>&bull; What exactly started the <b>animal explosion</b>?<br>&bull; Is there life like ours on <b>other planets</b>?</p><div class="note"><b>Maybe you</b> will be the scientist who finds the answer one day!</div></section>
+<h2 class="section">Amazing facts</h2>
+<table><tr><th>Question</th><th>Answer</th></tr><tr><td>How long was tiny life the only life?</td><td>About 3 billion years</td></tr><tr><td>Who first made the oxygen we breathe?</td><td>Tiny cyanobacteria</td></tr><tr><td>How long did dinosaurs rule?</td><td>More than 160 million years</td></tr><tr><td>When did the dinosaurs disappear?</td><td>66 million years ago</td></tr><tr><td>Are birds dinosaurs?</td><td>Yes! Birds are living dinosaurs</td></tr></table>
+<div class="note"><b>Try this:</b> next time you see a bird, say hello to a living dinosaur!</div>
+<h2 class="section">Where these facts and pictures come from (for grown-ups)</h2>
+<ul class="sources"><li>Pictures are from <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>: NASA and LadyofHats images (public domain), the Lascaux cave painting (public domain), and pictures by Didier Descouens, Graeme Churchard, Ghedoghedo, Nobu Tamura, John Alan Elson, Smith609, Matt Martyniuk, H. Raab, Flying Puffin and 120 under the Creative Commons licences shown in each caption.</li><li><a href="https://en.wikipedia.org/wiki/Stromatolite">Stromatolites — Wikipedia</a></li><li><a href="https://en.wikipedia.org/wiki/Great_Oxidation_Event">Great Oxidation Event — Wikipedia</a></li><li><a href="https://en.wikipedia.org/wiki/Eukaryote">Eukaryotes (complex cells) — Wikipedia</a></li><li><a href="https://en.wikipedia.org/wiki/Cambrian_explosion">Cambrian explosion — Wikipedia</a></li><li><a href="https://en.wikipedia.org/wiki/Tiktaalik">Tiktaalik — Wikipedia</a></li><li><a href="https://en.wikipedia.org/wiki/Cretaceous%E2%80%93Paleogene_extinction_event">The end of the dinosaurs — Wikipedia</a></li><li><a href="https://en.wikipedia.org/wiki/Homo_sapiens">Homo sapiens — Wikipedia</a></li><li><a href="https://shoyaibraby.com/writing/big-bang-to-first-life.html">Our earlier guide: From the Big Bang to the First Life on Earth</a></li></ul>
+<footer>Written by Abu Musa Muhammad Shoyaib · November 2026</footer>
+</div>
+</body>
+</html>
