@@ -9,7 +9,8 @@ const all = await client.fetch(`*[_type == "article" && defined(slug.current)] |
 const spaceGuide = {title: 'A Trip Through Space: From Earth to the Multiverse', slug: 'trip-through-space', category: 'Science'}
 const bigBangGuide = {title: 'From the Big Bang to the First Life on Earth', slug: 'big-bang-to-first-life', category: 'Science'}
 const lifeGuide = {title: 'From the First Life to You and Me', slug: 'first-life-to-us', category: 'Science'}
-const articles = [lifeGuide, bigBangGuide, spaceGuide, ...withRemainder(page.articles, all).filter((a: any) => a.slug && a.slug !== spaceGuide.slug && a.slug !== bigBangGuide.slug && a.slug !== lifeGuide.slug)]
+const humanGuide = {title: 'How We Became Human', slug: 'how-we-became-human', category: 'Science'}
+const articles = [humanGuide, lifeGuide, bigBangGuide, spaceGuide, ...withRemainder(page.articles, all).filter((a: any) => a.slug && a.slug !== spaceGuide.slug && a.slug !== bigBangGuide.slug && a.slug !== lifeGuide.slug && a.slug !== humanGuide.slug)]
 const settings = (await getSettings()) || {}
 const seo = page.seo || {}
 ---
