@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How We Became Human</title>
+<meta name="description" content="A simple, picture-filled guide for children: how our own family line changed from one tiny cell to fish, the first mammals, apes, early humans, farmers and finally modern humans like us.">
+<style>
+  :root {
+    --navy: #023852;
+    --teal: #079fa0;
+    --mint: #9fd8c5;
+    --yellow: #fac005;
+    --red: #dc2e2f;
+    --ink: #0b2433;
+  }
+  * { box-sizing: border-box; }
+  html { background: #ffffff; }
+  body {
+    margin: 0;
+    font-family: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 18px;
+    background:
+      radial-gradient(600px 420px at 4% 6%, rgba(159, 216, 197, 0.45), transparent 60%),
+      radial-gradient(600px 420px at 98% 22%, rgba(250, 192, 5, 0.18), transparent 60%),
+      radial-gradient(600px 420px at 2% 55%, rgba(7, 159, 160, 0.16), transparent 60%),
+      radial-gradient(600px 420px at 98% 80%, rgba(220, 46, 47, 0.12), transparent 60%),
+      #ffffff;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 28px 20px 72px; }
+
+  /* Each panel picks its colours from these variables */
+  .stop, header, table {
+    --bg: var(--navy); --fg: #ffffff; --soft: rgba(255,255,255,0.82); --num-bg: var(--yellow); --num-fg: var(--navy);
+    background:
+      radial-gradient(520px 240px at 100% 0%, rgba(255, 255, 255, 0.22), transparent 70%),
+      linear-gradient(150deg, color-mix(in srgb, var(--bg) 82%, white), var(--bg) 55%, color-mix(in srgb, var(--bg) 85%, black));
+    color: var(--fg);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    backdrop-filter: blur(14px) saturate(150%);
+    box-shadow:
+      0 18px 40px color-mix(in srgb, var(--bg) 35%, transparent),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  /* Colour order along the trip */
+  section.stop:nth-of-type(1) { --bg: var(--navy); }
+  section.stop:nth-of-type(2) { --bg: var(--teal); --num-bg: #ffffff; --num-fg: var(--teal); }
+  section.stop:nth-of-type(3) { --bg: var(--yellow); --fg: var(--navy); --soft: rgba(2,56,82,0.85); --num-bg: var(--navy); --num-fg: #ffffff; }
+  section.stop:nth-of-type(4) { --bg: var(--red); --num-bg: var(--yellow); --num-fg: var(--navy); }
+  section.stop:nth-of-type(5) { --bg: var(--mint); --fg: var(--navy); --soft: rgba(2,56,82,0.85); --num-bg: var(--navy); --num-fg: #ffffff; }
+  section.stop:nth-of-type(6) { --bg: var(--navy); --num-bg: var(--mint); --num-fg: var(--navy); }
+  section.stop:nth-of-type(7) { --bg: var(--teal); --num-bg: var(--yellow); --num-fg: var(--navy); }
+  section.stop:nth-of-type(8) { --bg: var(--red); --num-bg: #ffffff; --num-fg: var(--red); }
+  section.stop:nth-of-type(9) { --bg: var(--yellow); --fg: var(--navy); --soft: rgba(2,56,82,0.85); --num-bg: var(--red); --num-fg: #ffffff; }
+  section.stop.idea {
+    --bg: var(--navy); --num-bg: var(--yellow); --num-fg: var(--navy);
+    background:
+      radial-gradient(500px 260px at 0% 0%, rgba(7, 159, 160, 0.55), transparent 70%),
+      radial-gradient(500px 260px at 100% 100%, rgba(220, 46, 47, 0.45), transparent 70%),
+      radial-gradient(400px 220px at 100% 0%, rgba(250, 192, 5, 0.35), transparent 70%),
+      var(--navy);
+    border: 2px dashed rgba(255, 255, 255, 0.7);
+  }
+
+  nav {
+    display: inline-flex; gap: 6px; align-items: center; padding: 8px 16px; border-radius: 999px; font-size: 15px;
+    background: rgba(255, 255, 255, 0.75); border: 1px solid rgba(2, 56, 82, 0.15);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    box-shadow: 0 6px 18px rgba(2, 56, 82, 0.08);
+  }
+  nav a { color: var(--teal) !important; font-weight: 600; }
+
+  header {
+    text-align: center; margin: 22px 0 10px; padding: 46px 28px 40px; border-radius: 32px;
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(420px 260px at 0% 100%, rgba(7, 159, 160, 0.75), transparent 70%),
+      radial-gradient(380px 240px at 100% 0%, rgba(220, 46, 47, 0.55), transparent 70%),
+      radial-gradient(360px 220px at 100% 100%, rgba(250, 192, 5, 0.45), transparent 70%),
+      var(--navy);
+  }
+  header::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6px;
+    background: linear-gradient(90deg, var(--navy), var(--teal), var(--mint), var(--yellow), var(--red));
+  }
+  header h1 { font-size: clamp(30px, 6vw, 50px); line-height: 1.15; margin: 0 0 14px; letter-spacing: -0.5px; color: #fff; }
+  header h1 span {
+    background: linear-gradient(90deg, var(--mint), var(--yellow), #ff8a8a);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  header p { color: rgba(255,255,255,0.88); font-size: 20px; margin: 0 auto; max-width: 640px; }
+
+  /* White glass frames for the drawings */
+  .card {
+    border-radius: 24px; padding: 12px; margin: 22px 0;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(2, 56, 82, 0.12);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    box-shadow: 0 12px 30px rgba(2, 56, 82, 0.12), inset 0 1px 0 #fff;
+    position: relative;
+  }
+  .card::before {
+    content: ""; position: absolute; left: 24px; right: 24px; top: -1px; height: 4px; border-radius: 0 0 4px 4px;
+    background: linear-gradient(90deg, var(--teal), var(--mint), var(--yellow), var(--red));
+  }
+  .stop .card::before { display: none; }
+  .card img { display: block; width: 100%; height: auto; border-radius: 16px; }
+  .stop .card {
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 26px rgba(0, 20, 40, 0.25);
+  }
+
+  .stop { border-radius: 30px; padding: 28px 28px 12px; margin: 14px 0; position: relative; }
+  .stop::before {
+    content: ""; position: absolute; left: 30px; right: 30px; top: 0; height: 2px; border-radius: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.95), transparent);
+  }
+  .stop h2 { margin: 0 0 10px; font-size: 28px; display: flex; align-items: center; gap: 14px; color: var(--fg); letter-spacing: -0.3px; }
+  .stop p { color: var(--fg); }
+  .stop b { color: var(--fg); }
+
+  .num {
+    display: inline-grid; place-items: center; flex: none; width: 48px; height: 48px; border-radius: 50%;
+    background: var(--num-bg); color: var(--num-fg);
+    font-size: 22px; font-weight: 800; border: 3px solid rgba(255,255,255,0.9);
+    box-shadow: 0 6px 16px rgba(0, 20, 40, 0.3);
+  }
+
+  .photo { margin: 20px 0 6px; }
+  .photo img {
+    display: block; width: 100%; height: auto; border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 14px 34px rgba(0, 15, 35, 0.4);
+  }
+  .stop > .photo img { max-width: 680px; margin: 0 auto; }
+  .caption { color: var(--soft); font-size: 16px; margin: 10px 4px 22px; }
+  .caption b { color: var(--fg); text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: color-mix(in srgb, var(--num-bg) 80%, transparent); text-underline-offset: 4px; }
+  .credit { color: var(--soft); opacity: .85; font-style: italic; }
+  .credit a { color: inherit; }
+
+  .zoom { text-align: center; font-weight: 800; font-size: 17px; margin: 8px 0; letter-spacing: .3px; }
+  .zoom::before { content: "\2193"; display: block; font-size: 32px; line-height: 1; animation: bob 1.8s ease-in-out infinite; }
+  .zoom:nth-of-type(4n+1) { color: var(--teal); }
+  .zoom:nth-of-type(4n+2) { color: #d99f00; }
+  .zoom:nth-of-type(4n+3) { color: var(--red); }
+  .zoom:nth-of-type(4n) { color: var(--navy); }
+  @keyframes bob { 50% { transform: translateY(5px); } }
+  @media (prefers-reduced-motion: reduce) { .zoom::before { animation: none; } }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid .photo { margin: 0; }
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+    body { font-size: 17px; }
+    .stop { padding: 22px 18px 8px; border-radius: 24px; }
+    header { padding: 32px 18px 26px; border-radius: 24px; }
+  }
+
+  .note {
+    border-left: 5px solid var(--yellow); padding: 12px 16px; border-radius: 14px; margin: 14px 0 22px;
+    background: rgba(250, 192, 5, 0.14); color: var(--ink);
+  }
+  .stop .note { background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255,255,255,0.45); border-left: 5px solid var(--yellow); color: var(--fg); }
+  .note b { color: inherit; }
+
+  table { --bg: var(--navy); width: 100%; border-collapse: separate; border-spacing: 0; margin: 12px 0 22px; border-radius: 22px; overflow: hidden; }
+  th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.18); color: #fff; }
+  tr:last-child td { border-bottom: none; }
+  th { background: linear-gradient(90deg, var(--teal), #0b8f9a); color: #fff; }
+  tr:nth-child(odd) td { background: rgba(255,255,255,0.05); }
+  td:last-child { color: var(--mint); font-weight: 600; }
+  tr:last-child td:last-child { color: var(--yellow); font-weight: 700; }
+
+  h2.section { font-size: 28px; margin: 44px 0 10px; color: var(--navy); letter-spacing: -0.3px; }
+  h2.section::after { content: ""; display: block; width: 90px; height: 5px; border-radius: 4px; margin-top: 8px;
+    background: linear-gradient(90deg, var(--teal), var(--yellow), var(--red)); }
+  .sources { font-size: 14px; color: #4d6a78; }
+  .sources a { color: var(--teal); }
+  footer { text-align: center; color: #4d6a78; font-size: 14px; margin-top: 44px; }
+  header .meta { display: inline-flex; gap: 10px; align-items: center; margin: 0 0 16px; padding: 6px 16px; border-radius: 999px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.35); font-size: 15px; font-weight: 600; color: #fff; letter-spacing: .3px; }
+  header .meta .dot { color: var(--yellow); }
+  .video-card video { display: block; width: 100%; height: auto; border-radius: 16px; background: #000; }
+  .video-card .video-cap { margin: 10px 6px 2px; color: var(--navy); font-weight: 600; font-size: 15px; text-align: center; }
+
+  .timeline { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .timeline li { border-radius: 18px; padding: 14px 14px 12px; color: #fff; position: relative; box-shadow: 0 8px 20px rgba(2,56,82,.18); }
+  .timeline li b { display: block; font-size: 15px; letter-spacing: .3px; opacity: .9; }
+  .timeline li span { display: block; font-size: 17px; font-weight: 700; line-height: 1.3; margin-top: 4px; }
+  .timeline li:nth-child(5n+1) { background: var(--navy); }
+  .timeline li:nth-child(5n+2) { background: var(--teal); }
+  .timeline li:nth-child(5n+3) { background: var(--yellow); color: var(--navy); }
+  .timeline li:nth-child(5n+4) { background: var(--red); }
+  .timeline li:nth-child(5n) { background: var(--mint); color: var(--navy); }
+  .timeline-title { margin: 6px 6px 12px; font-weight: 800; color: var(--navy); font-size: 20px; }
+  @media (max-width: 640px) { .timeline { grid-template-columns: 1fr 1fr; } }
+  header .meta { display: inline-flex; gap: 10px; align-items: center; margin: 0 0 16px; padding: 6px 16px; border-radius: 999px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.35); font-size: 15px; font-weight: 600; color: #fff; letter-spacing: .3px; }
+  header .meta .dot { color: var(--yellow); }
+  .when { display: inline-block; margin: 0 0 10px; padding: 4px 12px; border-radius: 999px; font-size: 14px; font-weight: 700; background: rgba(255,255,255,0.2); color: var(--fg); }
+  section.stop:nth-of-type(10) { --bg: var(--teal); --num-bg: #ffffff; --num-fg: var(--teal); }
+  section.stop:nth-of-type(11) { --bg: var(--mint); --fg: var(--navy); --soft: rgba(2,56,82,0.85); --num-bg: var(--red); --num-fg: #ffffff; }
+  section.stop:nth-of-type(12) { --bg: var(--navy); --num-bg: var(--yellow); --num-fg: var(--navy); }
+  section.stop:nth-of-type(13) { --bg: var(--red); --num-bg: var(--yellow); --num-fg: var(--navy); }
+  section.stop.idea { --bg: var(--navy); }
+</style>
+</head>
+<body><div class="wrap">
+<nav style="font-size:15px"><a href="/writing/" style="text-decoration:none">&larr; Back to Writing</a> &nbsp;·&nbsp; <a href="/" style="text-decoration:none">shoyaibraby.com</a></nav>
+<header><h1>How We Became<br><span>Human</span></h1><div class="meta"><span>Science</span><span class="dot">•</span><time datetime="2026-11-26">26 November 2026</time></div><p>Who were your great-great-great-grandparents? Not only people! Long ago they were fish, tiny furry animals and apes. This is the story of <b>our own family</b>, from one tiny cell all the way to <b>modern humans</b> like you and me.</p></header>
+<div class="card" style="padding:20px"><p class="timeline-title">The whole story on one line</p><ol class="timeline">
+<li><b>3.5 billion years ago</b><span>One tiny cell</span></li><li><b>530 million years ago</b><span>We become fish</span></li><li><b>375 million years ago</b><span>Fins become legs</span></li><li><b>205 million years ago</b><span>The first mammals</span></li><li><b>60 million years ago</b><span>The first primates</span></li><li><b>7 million years ago</b><span>Standing up on two legs</span></li><li><b>2.5 million years ago</b><span>Stone tools and the first Homo</span></li><li><b>300,000 years ago</b><span>People like us!</span></li><li><b>60,000 years ago</b><span>Out of Africa</span></li><li><b>12,000 years ago</b><span>The first farmers</span></li><li><b>5,000 years ago</b><span>Cities and writing</span></li><li><b>Today</b><span>8.3 billion modern humans</span></li></ol></div>
+<div class="note"><b>Did you know?</b> If a new grandmother were born every 25 years, your great-great-great-...-grandmother who lived <b>7 million years ago</b> would be about <b>280,000 grandmothers</b> back. And all of them were living in <b>Africa</b>!</div>
+<section class="stop"><h2><span class="num">1</span> One tiny cell</h2><span class="when">More than 3.5 billion years ago</span><p>Our family story starts with <b>one tiny cell</b> in the sea. It was so small that you could not see it. However, it could do something amazing: it could make <b>copies of itself</b>. Every plant, every animal and every person comes from this tiny beginning. Even <b>you</b> started your life as just one tiny cell!</p><div class="photo"><img src="/writing/img/human/h01-cyanobacteria-under-light-microscope-40x.jpg" alt="Green tiny cells seen through a microscope" loading="lazy"></div>
+  <p class="caption"><b>Tiny cells under a microscope.</b> The first living things were small and simple, a bit like these. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Cyanobacteria_Under_Light_Microscope_40x_Mag.jpg">Iceclanl</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">2</span> We become fish</h2><span class="when">About 530 million years ago</span><p>After a very long time, some animals in the sea grew a <b>stiff rod along their back</b>. This was the start of a <b>backbone</b>. These little animals were the <b>first fish</b>. Touch the middle of your back. Can you feel the bumps? That backbone first came from these tiny fish!</p><div class="photo"><img src="/writing/img/human/h02-haikouichthys-nt.jpg" alt="Drawing of Haikouichthys, a tiny early fish" loading="lazy"></div>
+  <p class="caption"><b>Haikouichthys</b> was one of the first fish. It was only as long as your finger. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Haikouichthys_NT.jpg">Nobu Tamura</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">3</span> Fins become legs</h2><span class="when">About 375 million years ago</span><p>Some fish had <b>strong fins with bones inside</b>. They used them to push through shallow water and mud. Slowly, over millions of years, these fins became <b>legs with fingers and toes</b>. Look at your arm: one bone at the top, two bones in the middle, then small bones in your hand. These old fish had the same plan!</p><div class="photo"><img src="/writing/img/human/h03-tiktaalik-roseae-life-restor.jpg" alt="Painting of Tiktaalik, a fish with leg-like fins in shallow water" loading="lazy"></div>
+  <p class="caption"><b>Tiktaalik</b> was half fish and half land animal. It had gills, but it also had a neck and strong fins like little arms. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Tiktaalik_roseae_life_restor.jpg">Zina Deretsky, National Science Foundation</a>, public domain)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">4</span> The first mammals</h2><span class="when">About 300 to 205 million years ago</span><p>Some land animals laid eggs with a <b>shell</b>, so they did not need water any more. One branch of this family slowly grew <b>hair</b> and fed their babies with <b>milk</b>. They became the <b>first mammals</b>. They were tiny, like a mouse, and they came out at night. Why? Because the giant <b>dinosaurs</b> ruled the day!</p><div class="photo"><img src="/writing/img/human/h04-dimetrodon-nt2-small.jpg" alt="Drawing of Dimetrodon, an animal with a big sail on its back" loading="lazy"></div>
+  <p class="caption"><b>Dimetrodon</b> looks like a dinosaur, but it is not! It belongs to the old family that later gave us the mammals. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Dimetrodon_NT2_small.jpg">Nobu Tamura</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p><div class="photo"><img src="/writing/img/human/h05-morganucodon.jpg" alt="Model of Morganucodon, a small furry early mammal" loading="lazy"></div>
+  <p class="caption"><b>Morganucodon</b> was one of the first mammals. It was about as big as a mouse. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Morganucodon.jpg">FunkMonk</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">5</span> The first primates</h2><span class="when">About 66 to 55 million years ago</span><p>Then a giant space rock hit the Earth, and the big dinosaurs disappeared. Now the little mammals had a chance! Some of them climbed up into the <b>trees</b>. They got <b>hands that could hold</b> branches, <b>flat nails</b> instead of claws, and <b>eyes at the front</b> to judge jumps. They were the first <b>primates</b>, the family of monkeys, apes and us.</p><div class="photo"><img src="/writing/img/human/h06-ring-tailed-lemur-lemur-catta.jpg" alt="A ring-tailed lemur sitting and looking at the camera" loading="lazy"></div>
+  <p class="caption"><b>A lemur</b> is a primate cousin who lives today. Look at its hands and the eyes at the front of its face! <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Ring-tailed_lemur_(Lemur_catta).jpg">Charles J. Sharp</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">6</span> Apes and our cousin, the chimp</h2><span class="when">About 25 to 7 million years ago</span><p>Some primates lost their tails. They became the <b>apes</b>. They were bigger and very clever. About 7 million years ago, one ape family split into two. One side became <b>chimpanzees</b>. The other side became <b>us</b>! So chimps are not our grandparents. They are our <b>cousins</b>. We still share about <b>99 out of every 100</b> letters of our DNA with them.</p><div class="photo"><img src="/writing/img/human/h07-proconsul-africanus-rusinga-18maf.jpg" alt="Fossil skull of Proconsul, an early ape" loading="lazy"></div>
+  <p class="caption"><b>Proconsul</b> was an early ape. It lived in Africa about 18 million years ago and had no tail, like us. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Proconsul_africanus_rusinga_18maf.jpg">Ghedoghedo</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p><div class="photo"><img src="/writing/img/human/h08-015-chimpanzee-at-kibale-forest-national.jpg" alt="A chimpanzee in a forest in Uganda" loading="lazy"></div>
+  <p class="caption"><b>A chimpanzee</b> in Uganda. Chimps use sticks as tools, just like our early family did. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:015_Chimpanzee_at_Kibale_forest_National_Park_Photo_by_Giles_Laurent.jpg">Giles Laurent</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">7</span> Standing up on two legs</h2><span class="when">About 7 to 3 million years ago</span><p>In Africa, our early family started to <b>walk on two legs</b>. Maybe it helped them to see over tall grass, or to carry food in their hands. Their brains were still small, like a chimp. However, their legs and feet were changing, step by step.</p><div class="photo"><img src="/writing/img/human/h09-sahelanthropus-tchadensis-tm-266-01-060.jpg" alt="Fossil skull of Sahelanthropus, called Toumai" loading="lazy"></div>
+  <p class="caption"><b>Toumaï</b> is about 7 million years old. It was found in Chad in 2001. It may be one of the oldest members of our family. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Sahelanthropus_tchadensis_-_TM_266-01-060-1.jpg">Didier Descouens</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p><div class="photo"><img src="/writing/img/human/h10-ardipithecus-ramidus-6547.jpg" alt="Fossil skull of Ardi" loading="lazy"></div>
+  <p class="caption"><b>Ardi's skull.</b> Ardi lived about 4.4 million years ago in Ethiopia. She could walk on two legs and also climb trees. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Ardipithecus_ramidus_6547.JPG">Ghedoghedo</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p><div class="photo"><img src="/writing/img/human/h11-laetoli-footprints-replica.jpg" alt="Copy of old footprints left in ash" loading="lazy"></div>
+  <p class="caption"><b>The Laetoli footprints</b> in Tanzania. About 3.7 million years ago, two of our relatives walked through wet volcanic ash. Their footprints are still there! <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Laetoli_footprints_replica.jpg">Momotarou2012</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">8</span> Tools, fire and travellers</h2><span class="when">About 3.3 to 1 million years ago</span><p>Our family learned to hit stones together to make <b>sharp tools</b>. The oldest stone tools are about <b>3.3 million years</b> old. Then came <b>Homo</b>, the human family. <b>Homo habilis</b> means "handy man". Later, <b>Homo erectus</b> was tall, with long legs for walking far. They were the first in our family to <b>leave Africa</b>, and in time they learned to use <b>fire</b>.</p><div class="photo"><img src="/writing/img/human/h12-homo-habilis-mgl-95213-p4150645-black.jpg" alt="Skull of Homo habilis" loading="lazy"></div>
+  <p class="caption"><b>Homo habilis</b>, one of the first members of the human family. Its brain was bigger than a chimp's. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Homo_habilis-MGL_95213-P4150645-black.jpg">Rama</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/fr/deed.en">CC BY-SA 3.0 FR</a>)</span></p><div class="photo"><img src="/writing/img/human/h13-em-homo-erectus-turkana-boy-1.jpg" alt="Skeleton of the Turkana Boy" loading="lazy"></div>
+  <p class="caption"><b>Turkana Boy</b> was a young Homo erectus who lived in Kenya about 1.5 million years ago. He was already very tall! <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Em_-_Homo_erectus,_Turkana_boy_-_1.jpg">Emőke Dénes</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p><div class="photo"><img src="/writing/img/human/h14-acheulean-hand-axe-findid-73844.jpg" alt="Stone hand axe shaped like a teardrop" loading="lazy"></div>
+  <p class="caption"><b>A hand axe.</b> Homo erectus and later humans made these clever teardrop tools for more than a million years. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Acheulean_hand_axe_(FindID_73844).jpg">The Portable Antiquities Scheme</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">9</span> Many kinds of humans</h2><span class="when">About 400,000 to 40,000 years ago</span><p>Not long ago, there were <b>many kinds of humans</b> on Earth at the same time! <b>Neanderthals</b> lived in Europe and West Asia. <b>Denisovans</b> lived in Asia. Tiny "hobbit" people, only about 1 metre tall, lived on an island in Indonesia. And in Africa, about <b>300,000 years ago</b>, people like <b>us</b> appeared. Our name is <b>Homo sapiens</b>, which means "wise human".</p><div class="photo"><img src="/writing/img/human/h15-neanderthal-man-reconstruction-natural-h.jpg" alt="Museum model of a Neanderthal man" loading="lazy"></div>
+  <p class="caption"><b>A Neanderthal man</b>, made by scientists from real bones. Neanderthals were strong, clever and cared for their sick. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Neanderthal_man_reconstruction,_Natural_History_Museum,_London.jpg">Werner Ustorf</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>)</span></p><div class="photo"><img src="/writing/img/human/h16-homo-longi-holotype.jpg" alt="The Harbin skull from China" loading="lazy"></div>
+  <p class="caption"><b>The Harbin skull</b> from China is at least 146,000 years old. In 2025, scientists found clues that it was a <b>Denisovan</b>. For the first time, we could see a Denisovan face! <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Homo_longi_holotype.jpg">Fu et al. 2025</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>)</span></p><div class="photo"><img src="/writing/img/human/h17-homo-florensiensis-mgl-95216-p4150647-bl.jpg" alt="Small skull of Homo floresiensis" loading="lazy"></div>
+  <p class="caption"><b>The "hobbit" skull</b> from the island of Flores, Indonesia. These little people had a brain about the size of a chimp's, but they still made stone tools. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Homo_Florensiensis-MGL_95216-P4150647-black.jpg">Rama</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/fr/deed.en">CC BY-SA 3.0 FR</a>)</span></p><div class="photo"><img src="/writing/img/human/h18-jebel-irhoud-1-nmnh.jpg" alt="Model of the Jebel Irhoud 1 skull" loading="lazy"></div>
+  <p class="caption"><b>The oldest Homo sapiens ever found!</b> This skull, called Jebel Irhoud 1, was found in Morocco in 1961. It is about <b>300,000 years old</b>. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Jebel_Irhoud-1_NMNH.jpg">Jonathan Chen</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">10</span> Our big journey around the world</h2><span class="when">About 60,000 to 15,000 years ago</span><p>About 50,000 to 60,000 years ago, small groups of our people <b>walked out of Africa</b>. Step by step, over many, many lifetimes, they reached Asia, Europe and even <b>Australia</b> by boat. Later, they walked into the <b>Americas</b>. Along the way, they painted animals and hands on cave walls and carved little statues. Slowly, all the other kinds of humans disappeared. In the end, we were the <b>only humans left</b>.</p><div class="photo"><img src="/writing/img/human/h19-migration-routes-of-modern-humans-2023.jpg" alt="World map with arrows showing how humans spread out of Africa" loading="lazy"></div>
+  <p class="caption"><b>Out of Africa.</b> The arrows show how our people walked and sailed from Africa to every part of the world. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Migration_routes_of_modern_humans_(2023).png">Jayasinghe23</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p><div class="photo"><img src="/writing/img/human/h20-hand-print-paintings-in-pettakere-cave-m.jpg" alt="Red hand prints painted on a cave wall" loading="lazy"></div>
+  <p class="caption"><b>Hand pictures in a cave in Indonesia.</b> Some hand pictures in these caves are about 40,000 years old. It is like the people are saying, "We were here!" <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Hand_print_paintings_in_Pettakere_Cave,_Maros.jpg">Sabjan Badio</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p><div class="photo"><img src="/writing/img/human/h21-paintings-from-the-chauvet-cave-museum-r.jpg" alt="Cave painting of horses and other animals" loading="lazy"></div>
+  <p class="caption"><b>Horses and other animals</b> painted in Chauvet Cave, France, more than 30,000 years ago. This is a copy in a museum. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Paintings_from_the_Chauvet_cave_(museum_replica).jpg">HTO</a>, public domain)</span></p><div class="photo"><img src="/writing/img/human/h22-human-fossil-tracks-at-white-sands-new-m.jpg" alt="Ancient human footprints in white ground" loading="lazy"></div>
+  <p class="caption"><b>Footprints at White Sands, USA.</b> They are about 21,000 to 23,000 years old. They show that people reached America very early. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Human_fossil_tracks_at_White_Sands_New_Mexico.jpg">U.S. Geological Survey</a>, public domain)</span></p><div class="note"><b>A family secret!</b> When our people left Africa, they met the Neanderthals and had babies together. That is why most people outside Africa still carry a tiny bit of <b>Neanderthal DNA</b>, about 1 or 2 out of every 100 parts.</div></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">11</span> From hunters to farmers</h2><span class="when">About 12,000 to 9,000 years ago</span><p>For almost all of our history, people were <b>hunters and gatherers</b>. They moved from place to place to find food. Then, about 12,000 years ago, the last Ice Age ended. In the Middle East, people started to <b>plant seeds</b> like wheat and barley. They kept goats and sheep. Now they could <b>stay in one place</b>, so they built the first <b>villages</b>.</p><div class="photo"><img src="/writing/img/human/h23-gobekli-tepe-enclosures-under-the-protec.jpg" alt="Big stone circles with T-shaped pillars at Gobekli Tepe" loading="lazy"></div>
+  <p class="caption"><b>Göbekli Tepe</b> in Turkey. People built these giant stone circles about 11,500 years ago. That is older than the pyramids! <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Gobekli_Tepe_enclosures_under_the_protective_roof,_Turkey,_2024.jpg">Middle East Minorities</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>)</span></p><div class="photo"><img src="/writing/img/human/h24-triticum-monococcum-mhnt-bot-2015-2-37.jpg" alt="Grains of einkorn wheat" loading="lazy"></div>
+  <p class="caption"><b>Einkorn wheat</b>, one of the very first crops that farmers grew. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Triticum_monococcum_MHNT.BOT.2015.2.37.jpg">Roger Culos</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</span></p><div class="photo"><img src="/writing/img/human/h25-atalhyk-7400-bc-konya-turkey-unesco-worl.jpg" alt="Inside a rebuilt mud-brick house at Catalhoyuk, with a ladder" loading="lazy"></div>
+  <p class="caption"><b>Çatalhöyük</b>, a big village in Turkey from about 9,000 years ago. There were no streets, so people went into their houses through a hole in the roof, using a ladder! <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Çatalhöyük,_7400_BC,_Konya,_Turkey_-_UNESCO_World_Heritage_Site,_02.jpg">Murat Özsoy</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">12</span> Cities, writing and kingdoms</h2><span class="when">About 6,000 to 4,500 years ago</span><p>Farms made lots of food, so villages grew into <b>cities</b>. People needed to remember who owned what. So, about <b>5,000 years ago</b>, people in Mesopotamia (today's Iraq) invented <b>writing</b>! Soon there were great cities in many places: by the Nile in Egypt, and by the Indus river, not far from Bangladesh.</p><div class="photo"><img src="/writing/img/human/h26-cuneiform-tablet-administrative-account.jpg" alt="Clay tablet with early writing marks" loading="lazy"></div>
+  <p class="caption"><b>Some of the first writing in the world!</b> The little marks on this clay tablet from Mesopotamia keep a record of barley. It is about 5,000 years old. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Cuneiform_tablet-_administrative_account_of_barley_distribution_with_cylinder_seal_impression_of_a_male_figure,_hunting_dogs,_and_boars_MET_DP297596.jpg">The Metropolitan Museum of Art</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>)</span></p><div class="photo"><img src="/writing/img/human/h27-mohenjo-daro.jpg" alt="Ruins of the brick city of Mohenjo-daro" loading="lazy"></div>
+  <p class="caption"><b>Mohenjo-daro</b>, a city of the Indus Valley, about 4,500 years old. It had neat streets, drains and a big bath. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Mohenjo-daro.jpg">Saqib Qayyum</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</span></p><div class="photo"><img src="/writing/img/human/h28-all-gizah-pyramids.jpg" alt="The pyramids of Giza in Egypt" loading="lazy"></div>
+  <p class="caption"><b>The pyramids of Giza</b> in Egypt were built about 4,500 years ago. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:All_Gizah_Pyramids.jpg">Ricardo Liberato</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>)</span></p></section>
+<div class="zoom">Time moves on!</div>
+<section class="stop"><h2><span class="num">13</span> Modern humans: you and me</h2><span class="when">The last few hundred years to today</span><p>In a very short time, humans learned amazing things. We made <b>machines</b>, <b>electricity</b>, <b>medicine</b> and <b>computers</b>. In 1969, people even walked on the <b>Moon</b>! Today, about <b>8.3 billion</b> people live on Earth. However, our bodies are almost the same as those first Homo sapiens in Africa. If one of them were born today, they could go to school with you!</p><div class="photo"><img src="/writing/img/human/h29-black-marble-americas.jpg" alt="Earth at night with city lights glowing" loading="lazy"></div>
+  <p class="caption"><b>Earth at night</b>, seen from space. Every bright spot is a city full of people. <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Black_Marble_Americas.jpg">NASA Earth Observatory</a>, public domain)</span></p><div class="photo"><img src="/writing/img/human/h30-apollo-11-bootprint.jpg" alt="A bootprint in grey Moon dust" loading="lazy"></div>
+  <p class="caption"><b>A human footprint on the Moon</b>, made in 1969. From footprints in ash at Laetoli to footprints on the Moon, what a journey! <span class="credit">(Picture: <a href="https://commons.wikimedia.org/wiki/File:Apollo_11_bootprint.jpg">NASA / Buzz Aldrin</a>, public domain)</span></p><div class="note"><b>You are the newest page of this story!</b> From one tiny cell, to fish, to tree-climbers, to walkers, to you. What will humans do next? Maybe <b>you</b> will help decide!</div></section>
+<section class="stop idea"><h2><span class="num">?</span> Big mysteries still to solve</h2><p>Scientists know a lot, but some questions are still open:</p><p>&bull; Which old fossil is our <b>real</b> great-grandparent, and which ones are only cousins?<br>&bull; Why did the <b>Neanderthals</b> disappear?<br>&bull; Why did our <b>brains</b> grow so big?</p><div class="note"><b>Maybe you</b> will dig up the next big fossil one day!</div></section>
+<h2 class="section">Amazing facts</h2>
+<table><tr><th>Question</th><th>Answer</th></tr><tr><td>Where did the human family begin?</td><td>In Africa</td></tr><tr><td>Who gave us our backbone?</td><td>The first fish, 530 million years ago</td></tr><tr><td>Are chimps our grandparents?</td><td>No! They are our cousins</td></tr><tr><td>How old are the oldest stone tools?</td><td>About 3.3 million years</td></tr><tr><td>Who first left Africa?</td><td>Homo erectus</td></tr><tr><td>When did our people leave Africa?</td><td>About 50,000 to 60,000 years ago</td></tr><tr><td>When did farming begin?</td><td>About 12,000 years ago</td></tr><tr><td>When was writing invented?</td><td>About 5,000 years ago</td></tr><tr><td>How many people live on Earth today?</td><td>About 8.3 billion</td></tr><tr><td>When did people like us appear?</td><td>About 300,000 years ago</td></tr></table>
+<div class="note"><b>Try this:</b> hold a pencil between your thumb and finger. That clever grip comes from our tree-climbing primate family!</div>
+<div class="note"><b>Read the whole series:</b> <a href="/writing/big-bang-to-first-life.html">From the Big Bang to the First Life</a> &rarr; <a href="/writing/first-life-to-us.html">From the First Life to You and Me</a> &rarr; How We Became Human.</div>
+<h2 class="section">Where these facts and pictures come from (for grown-ups)</h2>
+<ul class="sources"><li>Pictures are from <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>. Each caption links to the picture's own page and its licence.</li>
+<li><a href="https://humanorigins.si.edu/evidence/human-fossils/species">Smithsonian Human Origins Program: human species</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Timeline_of_human_evolution">Timeline of human evolution — Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Tiktaalik">Tiktaalik — Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Sahelanthropus">Sahelanthropus (Toumaï) — Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Laetoli">Laetoli footprints — Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Lomekwi">Lomekwi: the oldest stone tools — Wikipedia</a></li>
+<li><a href="https://english.cas.cn/newsroom/cas_media/202506/t20250619_1045847.shtml">Chinese Academy of Sciences (2025): Harbin skull linked to Denisovans</a></li>
+<li><a href="https://www.mpg.de/23832006/new-timeline-for-neandertal-gene-flow-event">Max Planck Society (2024): new timeline for Neanderthal gene flow</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Jebel_Irhoud">Jebel Irhoud — Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Homo_floresiensis">Homo floresiensis (the "hobbit") — Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Early_human_migrations">Early human migrations — Wikipedia</a></li>
+<li><a href="https://www.usgs.gov/news/national-news-release/study-confirms-age-oldest-fossil-human-footprints-north-america">USGS (2023): age of the White Sands footprints confirmed</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Chauvet_Cave">Chauvet Cave — Wikipedia</a></li>
+<li><a href="https://education.nationalgeographic.org/resource/development-agriculture/">National Geographic Education: the development of agriculture</a></li>
+<li><a href="https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe">Göbekli Tepe — Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/%C3%87atalh%C3%B6y%C3%BCk">Çatalhöyük — Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cuneiform">Cuneiform, the first writing — Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Mohenjo-daro">Mohenjo-daro — Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apollo_11">Apollo 11 — Wikipedia</a></li>
+<li><a href="https://population.un.org/wpp/">United Nations World Population Prospects</a></li></ul>
+<footer>Written by Abu Musa Muhammad Shoyaib · November 2026</footer>
+</div>
+</body>
+</html>
