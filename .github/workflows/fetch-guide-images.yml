@@ -1,0 +1,60 @@
+name: Fetch guide images (one-time)
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/fetch-guide-images.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download pictures from Wikimedia Commons
+        run: |
+          sudo apt-get install -y -qq imagemagick >/dev/null
+          mkdir -p public/writing/img/human
+          get() {
+            curl -sSfL -A "shoyaibraby.com guide image fetch (github actions)" -o /tmp/img "https://commons.wikimedia.org/wiki/Special:FilePath/$1?width=1000"
+            convert /tmp/img -background white -flatten -resize '1000x1000>' -strip -quality 80 "public/writing/img/human/$2"
+            sleep 1
+          }
+          get "Cyanobacteria_Under_Light_Microscope_40x_Mag.jpg" h01-cyanobacteria-under-light-microscope-40x.jpg
+          get "Haikouichthys_NT.jpg" h02-haikouichthys-nt.jpg
+          get "Tiktaalik_roseae_life_restor.jpg" h03-tiktaalik-roseae-life-restor.jpg
+          get "Dimetrodon_NT2_small.jpg" h04-dimetrodon-nt2-small.jpg
+          get "Morganucodon.jpg" h05-morganucodon.jpg
+          get "Ring-tailed_lemur_%28Lemur_catta%29.jpg" h06-ring-tailed-lemur-lemur-catta.jpg
+          get "Proconsul_africanus_rusinga_18maf.jpg" h07-proconsul-africanus-rusinga-18maf.jpg
+          get "015_Chimpanzee_at_Kibale_forest_National_Park_Photo_by_Giles_Laurent.jpg" h08-015-chimpanzee-at-kibale-forest-national.jpg
+          get "Sahelanthropus_tchadensis_-_TM_266-01-060-1.jpg" h09-sahelanthropus-tchadensis-tm-266-01-060.jpg
+          get "Ardipithecus_ramidus_6547.JPG" h10-ardipithecus-ramidus-6547.jpg
+          get "Laetoli_footprints_replica.jpg" h11-laetoli-footprints-replica.jpg
+          get "Homo_habilis-MGL_95213-P4150645-black.jpg" h12-homo-habilis-mgl-95213-p4150645-black.jpg
+          get "Em_-_Homo_erectus%2C_Turkana_boy_-_1.jpg" h13-em-homo-erectus-turkana-boy-1.jpg
+          get "Acheulean_hand_axe_%28FindID_73844%29.jpg" h14-acheulean-hand-axe-findid-73844.jpg
+          get "Neanderthal_man_reconstruction%2C_Natural_History_Museum%2C_London.jpg" h15-neanderthal-man-reconstruction-natural-h.jpg
+          get "Homo_longi_holotype.jpg" h16-homo-longi-holotype.jpg
+          get "Homo_Florensiensis-MGL_95216-P4150647-black.jpg" h17-homo-florensiensis-mgl-95216-p4150647-bl.jpg
+          get "Jebel_Irhoud-1_NMNH.jpg" h18-jebel-irhoud-1-nmnh.jpg
+          get "Migration_routes_of_modern_humans_%282023%29.png" h19-migration-routes-of-modern-humans-2023.jpg
+          get "Hand_print_paintings_in_Pettakere_Cave%2C_Maros.jpg" h20-hand-print-paintings-in-pettakere-cave-m.jpg
+          get "Paintings_from_the_Chauvet_cave_%28museum_replica%29.jpg" h21-paintings-from-the-chauvet-cave-museum-r.jpg
+          get "Human_fossil_tracks_at_White_Sands_New_Mexico.jpg" h22-human-fossil-tracks-at-white-sands-new-m.jpg
+          get "Gobekli_Tepe_enclosures_under_the_protective_roof%2C_Turkey%2C_2024.jpg" h23-gobekli-tepe-enclosures-under-the-protec.jpg
+          get "Triticum_monococcum_MHNT.BOT.2015.2.37.jpg" h24-triticum-monococcum-mhnt-bot-2015-2-37.jpg
+          get "%C3%87atalh%C3%B6y%C3%BCk%2C_7400_BC%2C_Konya%2C_Turkey_-_UNESCO_World_Heritage_Site%2C_02.jpg" h25-atalhyk-7400-bc-konya-turkey-unesco-worl.jpg
+          get "Cuneiform_tablet-_administrative_account_of_barley_distribution_with_cylinder_seal_impression_of_a_male_figure%2C_hunting_dogs%2C_and_boars_MET_DP297597.jpg" h26-cuneiform-tablet-administrative-account.jpg
+          get "Mohenjo-daro.jpg" h27-mohenjo-daro.jpg
+          get "All_Gizah_Pyramids.jpg" h28-all-gizah-pyramids.jpg
+          get "Black_Marble_Americas.jpg" h29-black-marble-americas.jpg
+          get "Apollo_11_bootprint.jpg" h30-apollo-11-bootprint.jpg
+          ls -la public/writing/img/human
+      - name: Commit pictures
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+          git add public/writing/img/human
+          git commit -m "Add pictures for the How We Became Human guide (from Wikimedia Commons)"
+          git push
